@@ -17,7 +17,8 @@
 		B5D213161B7E414A00CDDC31 /* NewOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D213151B7E414A00CDDC31 /* NewOrder.swift */; };
 		B5DC48E81B8052470090D826 /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DC48E71B8052470090D826 /* Products.swift */; };
 		B5DC48EE1B806C630090D826 /* ShopOrders.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B5DC48EC1B806C630090D826 /* ShopOrders.xcdatamodeld */; };
-		B5DC48F51B806D670090D826 /* Supplier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DC48F41B806D670090D826 /* Supplier.swift */; };
+		B5DC48F51B806D670090D826 /* SupplierVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DC48F41B806D670090D826 /* SupplierVC.swift */; };
+		B5DC48F91B8095580090D826 /* Supplier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DC48F81B8095580090D826 /* Supplier.swift */; };
 		F00030C953ECC6D356D56ECF /* Pods_ShopOrders.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBA158B2BE8D3C1547AD57DC /* Pods_ShopOrders.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -47,8 +48,9 @@
 		B5D213151B7E414A00CDDC31 /* NewOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewOrder.swift; sourceTree = "<group>"; };
 		B5DC48E71B8052470090D826 /* Products.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
 		B5DC48ED1B806C630090D826 /* ShopOrders.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ShopOrders.xcdatamodel; sourceTree = "<group>"; };
-		B5DC48F41B806D670090D826 /* Supplier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Supplier.swift; sourceTree = "<group>"; };
+		B5DC48F41B806D670090D826 /* SupplierVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupplierVC.swift; sourceTree = "<group>"; };
 		B5DC48F71B8075A80090D826 /* ShopOrders-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ShopOrders-Bridging-Header.h"; sourceTree = "<group>"; };
+		B5DC48F81B8095580090D826 /* Supplier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Supplier.swift; sourceTree = "<group>"; };
 		BA789F78907914E540B44965 /* Pods-ShopOrders.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShopOrders.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShopOrders/Pods-ShopOrders.debug.xcconfig"; sourceTree = "<group>"; };
 		BBA158B2BE8D3C1547AD57DC /* Pods_ShopOrders.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShopOrders.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -118,7 +120,7 @@
 				B52FEAAC1B7E1561002795AF /* SecondViewController.swift */,
 				B5D213151B7E414A00CDDC31 /* NewOrder.swift */,
 				B5DC48E71B8052470090D826 /* Products.swift */,
-				B5DC48F41B806D670090D826 /* Supplier.swift */,
+				B5DC48F41B806D670090D826 /* SupplierVC.swift */,
 				B52FEAAE1B7E1561002795AF /* Main.storyboard */,
 				B5DC48EB1B806C370090D826 /* Model */,
 				B52FEAB11B7E1561002795AF /* Images.xcassets */,
@@ -157,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				B5DC48EC1B806C630090D826 /* ShopOrders.xcdatamodeld */,
+				B5DC48F81B8095580090D826 /* Supplier.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -312,11 +315,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5DC48F51B806D670090D826 /* Supplier.swift in Sources */,
+				B5DC48F51B806D670090D826 /* SupplierVC.swift in Sources */,
 				B52FEAAD1B7E1561002795AF /* SecondViewController.swift in Sources */,
 				B52FEAA91B7E1561002795AF /* AppDelegate.swift in Sources */,
 				B5DC48EE1B806C630090D826 /* ShopOrders.xcdatamodeld in Sources */,
 				B5DC48E81B8052470090D826 /* Products.swift in Sources */,
+				B5DC48F91B8095580090D826 /* Supplier.swift in Sources */,
 				B52FEAAB1B7E1561002795AF /* FirstViewController.swift in Sources */,
 				B5D213161B7E414A00CDDC31 /* NewOrder.swift in Sources */,
 			);

@@ -32,7 +32,7 @@ class NewOrder: FormViewController {
     private func loadForm() {
         let form = FormDescriptor()
         
-        form.title = "New Order"
+        form.title = "Supplier"
         
         
         let section5 = FormSectionDescriptor()

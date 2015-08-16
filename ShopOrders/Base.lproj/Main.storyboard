@@ -88,10 +88,10 @@
             </objects>
             <point key="canvasLocation" x="1638" y="604"/>
         </scene>
-        <!--Supplier-->
+        <!--SupplierVC-->
         <scene sceneID="2Go-U7-ORP">
             <objects>
-                <viewController id="wFI-bk-aT1" customClass="Supplier" customModule="ShopOrders" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="wFI-bk-aT1" customClass="SupplierVC" customModule="ShopOrders" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="a8O-nE-U2W">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
