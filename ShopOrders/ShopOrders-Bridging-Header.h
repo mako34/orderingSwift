@@ -7,4 +7,5 @@
 //
 
 #define MR_SHORTHAND
-#import <CoreData+MagicalRecord.h>
+//#import <Foundation/Foundation.h> 
+//#import "MagicalRecord/MagicalRecord.h"

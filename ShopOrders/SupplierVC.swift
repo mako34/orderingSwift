@@ -6,8 +6,10 @@
 //  Copyright (c) 2015 Hyper. All rights reserved.
 //
 
+import CoreData
 import UIKit
 import SwiftForms
+ 
 
 class SupplierVC: FormViewController {
     
@@ -98,7 +100,9 @@ class SupplierVC: FormViewController {
                 supplierObj?.name = name!
                 supplierObj?.email = email!
                 supplierObj?.phone = phone!
+//                NSManagedObjectContext.defaultContext().saveToPersistentStoreAndWait()
                 
+                 
                 self.performSegueWithIdentifier("showProducts", sender: nil)
             }
             
