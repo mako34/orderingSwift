@@ -1,0 +1,13 @@
+PODS:
+  - MagicalRecord/Shorthand (2.2)
+  - SwiftForms (1.0)
+
+DEPENDENCIES:
+  - MagicalRecord/Shorthand
+  - SwiftForms
+
+SPEC CHECKSUMS:
+  MagicalRecord: f8a56bb87ab6552f20c4bb8681a1958a197ea3cd
+  SwiftForms: b16bf2978e6eb6617bc9f438322a1daa6c3d2dbd
+
+COCOAPODS: 0.38.2

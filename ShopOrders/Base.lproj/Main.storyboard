@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+    </dependencies>
+    <scenes>
+        <!--MyOrders-->
+        <scene sceneID="puw-Xx-Wrg">
+            <objects>
+                <tableViewController id="rap-vs-dER" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="5ja-5k-H7w">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="0fy-d4-f99">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0fy-d4-f99" id="MR8-gY-qRC">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="rap-vs-dER" id="1rj-L8-G5h"/>
+                            <outlet property="delegate" destination="rap-vs-dER" id="LtD-i0-43S"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="MyOrders" id="ZhE-ts-Ylr">
+                        <barButtonItem key="rightBarButtonItem" title="New" id="f2I-9b-0u7">
+                            <connections>
+                                <segue destination="iLu-Ew-2cG" kind="show" id="8pC-7x-EHI"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fxd-z3-Zez" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1623" y="-146"/>
+        </scene>
+        <!--New Order-->
+        <scene sceneID="a38-hh-rkz">
+            <objects>
+                <viewController id="iLu-Ew-2cG" customClass="NewOrder" customModule="ShopOrders" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Iut-fT-Oqk">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="iLu-Ew-2cG" id="zzc-PX-leq"/>
+                            <outlet property="delegate" destination="iLu-Ew-2cG" id="KRH-I1-P1y"/>
+                        </connections>
+                    </tableView>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xwy-Ee-5ZF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2364" y="-146"/>
+        </scene>
+        <!--MySuppliers-->
+        <scene sceneID="dCg-PF-o3Z">
+            <objects>
+                <tableViewController id="HX8-JN-o1p" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="H4H-g1-1B4">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="AzT-k3-YVt">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AzT-k3-YVt" id="Pnf-xR-gmO">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="HX8-JN-o1p" id="hRg-i2-lIR"/>
+                            <outlet property="delegate" destination="HX8-JN-o1p" id="kjr-D3-0BW"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="MySuppliers" id="WUl-qI-fEm">
+                        <barButtonItem key="rightBarButtonItem" title="New" id="JpB-YJ-dTr">
+                            <connections>
+                                <segue destination="wFI-bk-aT1" kind="show" id="6G6-oR-ZMH"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FPD-oR-pet" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1638" y="604"/>
+        </scene>
+        <!--Supplier-->
+        <scene sceneID="2Go-U7-ORP">
+            <objects>
+                <viewController id="wFI-bk-aT1" customClass="Supplier" customModule="ShopOrders" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="a8O-nE-U2W">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="wFI-bk-aT1" id="SJ7-Li-8cF"/>
+                            <outlet property="delegate" destination="wFI-bk-aT1" id="A0Y-e1-QXx"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <segue destination="Zz2-cB-XLB" kind="show" identifier="showProducts" id="X6e-bn-Mk4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ydx-JH-y7O" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2352" y="588"/>
+        </scene>
+        <!--Products-->
+        <scene sceneID="euG-6v-R24">
+            <objects>
+                <viewController id="Zz2-cB-XLB" customClass="Products" customModule="ShopOrders" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8tp-Wk-rtF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="PeE-qw-cyx">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="Zz2-cB-XLB" id="pIc-Eg-gR6"/>
+                        <outlet property="delegate" destination="Zz2-cB-XLB" id="FPq-AY-Wt9"/>
+                    </connections>
+                </tableView>
+            </objects>
+            <point key="canvasLocation" x="3038" y="588"/>
+        </scene>
+        <!--Suppliers-->
+        <scene sceneID="Ubi-xP-eMS">
+            <objects>
+                <navigationController id="Ykw-Xq-5Um" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Suppliers" image="supplies" id="oIe-2a-dub"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xD0-i9-OKk">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="HX8-JN-o1p" kind="relationship" relationship="rootViewController" id="d2D-5A-dIp"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qnx-UP-tuw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="818" y="604"/>
+        </scene>
+        <!--MyOrders-->
+        <scene sceneID="eZd-C8-A8R">
+            <objects>
+                <navigationController id="u1c-m7-Xkj" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="MyOrders" image="lists" id="DZc-I1-naH"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="P4w-iJ-jbZ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="rap-vs-dER" kind="relationship" relationship="rootViewController" id="qgl-jg-Wno"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wYd-Lw-rq0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="811" y="-146"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="yl2-sM-qoP">
+            <objects>
+                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
+                        <rect key="frame" x="0.0" y="975" width="768" height="49"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="u1c-m7-Xkj" kind="relationship" relationship="viewControllers" id="Q4K-S3-bgk"/>
+                        <segue destination="Ykw-Xq-5Um" kind="relationship" relationship="viewControllers" id="dLB-b9-ZO5"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4" y="20"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="lists" width="32" height="32"/>
+        <image name="supplies" width="32" height="32"/>
+    </resources>
+</document>
