@@ -12,7 +12,9 @@ import Realm
 class MySuppliersVC: UITableViewController {
 
     @IBOutlet var table: UITableView!
-    var suppliers : [Supplier]!
+    var suppliers : RLMResults!
+//    var suppliers = RLMArray(objectClassName: Supplier.className())
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +36,9 @@ class MySuppliersVC: UITableViewController {
                 return Supplier.allObjects()
             }
         }
+ 
+        self.suppliers = supplieres
+        
         
         println(supplieres)
         
@@ -56,8 +61,7 @@ class MySuppliersVC: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-//        return suppliers.count
-        return 0
+        return Int(self.suppliers.count)
     }
 
 
@@ -65,8 +69,13 @@ class MySuppliersVC: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
 
         // Configure the cell...
+
+
+        let index = UInt(indexPath.row)
+        let supplierItem = self.suppliers.objectAtIndex(index) as! Supplier
         
-        cell.textLabel?.text = suppliers[indexPath.row].name
+        cell.textLabel?.text = supplierItem.name
+        
         return cell
     }
 
