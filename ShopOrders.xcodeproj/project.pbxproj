@@ -463,7 +463,6 @@
 					"\"MagicalRecord\"",
 					"-framework",
 					"\"CoreData\"",
-					"\"SwiftForms\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "ShopOrders/ShopOrders-Bridging-Header.h";
@@ -485,7 +484,6 @@
 					"\"MagicalRecord\"",
 					"-framework",
 					"\"CoreData\"",
-					"\"SwiftForms\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "ShopOrders/ShopOrders-Bridging-Header.h";
