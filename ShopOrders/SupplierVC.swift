@@ -9,7 +9,9 @@
 import CoreData
 import UIKit
 import SwiftForms
- 
+
+import MagicalRecord
+
 
 class SupplierVC: FormViewController {
     
@@ -100,9 +102,38 @@ class SupplierVC: FormViewController {
                 supplierObj?.name = name!
                 supplierObj?.email = email!
                 supplierObj?.phone = phone!
-//                NSManagedObjectContext.defaultContext().saveToPersistentStoreAndWait()
+ 
                 
-                 
+//                let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+ 
+                
+            
+                
+                
+//                MagicalRecord .saveWithBlock({ (NSManagedObjectContext) -> Void in
+//                    code
+//                }, completion: { (<#Bool#>, NSError!) -> Void in
+//                    code
+//                });
+                
+//                NSManagedObjectContext .defaultContext().saveToPersistentStoreAndWait()
+                
+ 
+//                MagicalRecord .saveWithBlock({ (NSManagedObjectContext ) -> Void in
+//
+//                }, completion: { (NSError!) -> Void in
+//                    
+//                })
+                
+                
+            
+
+                //context?
+//                MagicalRecord.saveWithBlockAndWait({ (NSManagedObjectContext) -> Void in
+//                    
+//                })
+                
+                
                 self.performSegueWithIdentifier("showProducts", sender: nil)
             }
             
