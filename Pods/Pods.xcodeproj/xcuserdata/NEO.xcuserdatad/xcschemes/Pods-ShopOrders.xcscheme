@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "400AAACDF59F3F83AA8B998E"
+               BlueprintIdentifier = "E093DAA007B7D2401D942530"
                BuildableName = "Pods_ShopOrders.framework"
                BlueprintName = "Pods-ShopOrders"
                ReferencedContainer = "container:Pods.xcodeproj">
