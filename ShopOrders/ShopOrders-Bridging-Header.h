@@ -9,3 +9,6 @@
 #define MR_SHORTHAND
 #import <Foundation/Foundation.h> 
 #import "MagicalRecord/MagicalRecord.h"
+#import <MagicalRecord/CoreData+MagicalRecord.h>
+#import <MagicalRecord/MagicalRecordShorthand.h>
+

@@ -6,11 +6,11 @@
 //  Copyright (c) 2015 Hyper. All rights reserved.
 //
 
-import CoreData
+//import CoreData
 import UIKit
 import SwiftForms
 
-import MagicalRecord
+//import MagicalRecord
 
 
 class SupplierVC: FormViewController {
@@ -88,26 +88,26 @@ class SupplierVC: FormViewController {
             if(self.isValid(name, email:email, phone:phone)) {
                 println("continue with elements ::")
                 
-                let supps = Supplier.MR_findAll()
-                println(supps)
-                
-                //check if exist
-                let predicate = NSPredicate(format: "name = %@", name!)
-                var supplierObj = Supplier.MR_findFirstWithPredicate(predicate) as? Supplier
-                
-                if(supplierObj == nil){
-                    supplierObj = (Supplier.MR_createEntity() as! Supplier)
-                }
-  
-                supplierObj?.name = name!
-                supplierObj?.email = email!
-                supplierObj?.phone = phone!
+//                let supps = Supplier.MR_findAll()
+//                println(supps)
+//                
+//                //check if exist
+//                let predicate = NSPredicate(format: "name = %@", name!)
+//                var supplierObj = Supplier.MR_findFirstWithPredicate(predicate) as? Supplier
+//                
+//                if(supplierObj == nil){
+//                    supplierObj = (Supplier.MR_createEntity() as! Supplier)
+//                }
+//  
+//                supplierObj?.name = name!
+//                supplierObj?.email = email!
+//                supplierObj?.phone = phone!
  
                 
 //                let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
  
                 
-            
+        
                 
                 
 //                MagicalRecord .saveWithBlock({ (NSManagedObjectContext) -> Void in
@@ -116,12 +116,19 @@ class SupplierVC: FormViewController {
 //                    code
 //                });
                 
-//                NSManagedObjectContext .defaultContext().saveToPersistentStoreAndWait()
                 
- 
-//                MagicalRecord .saveWithBlock({ (NSManagedObjectContext ) -> Void in
+//                NSManagedObjectContext.defaultContext().saveToPersistentStoreAndWait()
+                
+                
+//                MagicalRecord.saveWithBlock({ (context) -> Void in
+////                    (context as NSManagedObjectContext).
+//                    
+//                })
+                
+//                MagicalRecord .saveWithBlock({ (context ) -> Void in
 //
-//                }, completion: { (NSError!) -> Void in
+//                    
+//                }, completion: { (error) -> Void in
 //                    
 //                })
                 
