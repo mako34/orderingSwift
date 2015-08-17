@@ -11,10 +11,23 @@ import Realm
 
 class MySuppliersVC: UITableViewController {
 
+    var supplier : Supplier
+
+    
     @IBOutlet var table: UITableView!
     var suppliers : RLMResults!
 //    var suppliers = RLMArray(objectClassName: Supplier.className())
 
+    
+    required init(coder aDecoder: NSCoder) {
+        self.supplier = Supplier()
+        
+        super.init(coder: aDecoder)
+        
+        
+        
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,6 +93,21 @@ class MySuppliersVC: UITableViewController {
     }
 
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        tableView .deselectRowAtIndexPath(indexPath, animated: true)
+        
+        let index = UInt(indexPath.row)
+        let supplierItem = self.suppliers.objectAtIndex(index) as! Supplier
+        
+        self.supplier = self.suppliers.objectAtIndex(index) as! Supplier
+        
+        
+        println("selecto \(supplierItem)")
+        
+        self.performSegueWithIdentifier("showSupplier", sender: nil)
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -88,17 +116,26 @@ class MySuppliersVC: UITableViewController {
     }
     */
 
-    /*
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            //tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            
+            //alert n delete!
+            let realm = RLMRealm.defaultRealm() //1
+            let objectToDelete = self.suppliers[UInt(indexPath.row)] as! Supplier //2
+            realm.beginWriteTransaction() //3
+            realm.deleteObject(objectToDelete) //4
+            realm.commitWriteTransaction() //5
+            
+            self.suppliers = Supplier.allObjects()
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade) //7
+            
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
 
     /*
     // Override to support rearranging the table view.
@@ -115,14 +152,12 @@ class MySuppliersVC: UITableViewController {
     }
     */
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        if let supplierVC = segue.destinationViewController as? SupplierVC {
+            supplierVC.supplier = self.supplier
+            
+        }
+        
     }
-    */
 
 }

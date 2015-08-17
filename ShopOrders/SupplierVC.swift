@@ -13,6 +13,9 @@ import UIKit
 
 //import MagicalRecord
 
+extension String {
+    var length: Int { return count(self)         }  // Swift 1.2
+}
 
 class SupplierVC: FormViewController {
     
@@ -57,7 +60,11 @@ class SupplierVC: FormViewController {
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .Plain, target: self, action: "submit:")
         
+        
     }
+    
+    
+ 
     
     private func loadForm() {
         let form = FormDescriptor()
@@ -65,22 +72,43 @@ class SupplierVC: FormViewController {
         form.title = "Supplier"
         
         
+        println("tha supplier ::  \(supplier)")
+        
         let section5 = FormSectionDescriptor()
         
         var row = FormRowDescriptor(tag: Static.nameTag, rowType: .Name, title: "Name")
-        row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.placeholder" : "Supplier Name", "textField.textAlignment" : NSTextAlignment.Right.rawValue]
-        section5.addRow(row)
+  
+        if(supplier.name.length > 0){
+            row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.text" : supplier.name, "textField.textAlignment" : NSTextAlignment.Right.rawValue]
+            section5.addRow(row)
+            
+            row = FormRowDescriptor(tag: Static.emailTag, rowType: .Email, title: "Email")
+            row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.text" : supplier.email, "textField.textAlignment" : NSTextAlignment.Right.rawValue]
+            section5.addRow(row)
+            
+            
+            row = FormRowDescriptor(tag: Static.phoneTag, rowType: .Phone, title: "Phone")
+            row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.text" : supplier.phone, "textField.textAlignment" : NSTextAlignment.Right.rawValue]
+            section5.addRow(row)
+ 
+        }else if (supplier.name.length == 0){
+            row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.placeholder" : "Supplier Name", "textField.textAlignment" : NSTextAlignment.Right.rawValue]
+            section5.addRow(row)
+            
+            row = FormRowDescriptor(tag: Static.emailTag, rowType: .Email, title: "Email")
+            row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.placeholder" : "john@gmail.com", "textField.textAlignment" : NSTextAlignment.Right.rawValue]
+            section5.addRow(row)
+            
+            
+            row = FormRowDescriptor(tag: Static.phoneTag, rowType: .Phone, title: "Phone")
+            row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.placeholder" : "e.g. 0034666777999", "textField.textAlignment" : NSTextAlignment.Right.rawValue]
+            section5.addRow(row)
+
+        }
         
-        row = FormRowDescriptor(tag: Static.emailTag, rowType: .Email, title: "Email")
-        row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.placeholder" : "john@gmail.com", "textField.textAlignment" : NSTextAlignment.Right.rawValue]
-        section5.addRow(row)
         
         
-        row = FormRowDescriptor(tag: Static.phoneTag, rowType: .Phone, title: "Phone")
-        row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.placeholder" : "e.g. 0034666777999", "textField.textAlignment" : NSTextAlignment.Right.rawValue]
-        section5.addRow(row)
-        
-        
+        //products button
         row = FormRowDescriptor(tag: Static.button, rowType: .Button, title: "Products")
         row.configuration[FormRowDescriptor.Configuration.DidSelectClosure] = {
             self.view.endEditing(true)
