@@ -4,12 +4,17 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>MagicalRecord.xcscheme</key>
+		<key>Pods-ShopOrders.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-ShopOrders.xcscheme</key>
+		<key>Realm.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>RealmSwift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -22,12 +27,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0D2920D6B4C45C9A3F7251D98AC5C780</key>
+		<key>31C3290396B3981C15C3813604FE9E6A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>82FD58AB3AD730E5D47F2E6EECD32EC7</key>
+		<key>31FE08D5CECF5F6C4CD737F1622A21E5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8530DEDBC37DD75056E54EB064F88745</key>
 		<dict>
 			<key>primary</key>
 			<true/>

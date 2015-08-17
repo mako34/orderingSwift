@@ -10,7 +10,8 @@ use_frameworks!
 
 target 'ShopOrders' do
 pod 'SwiftForms'
-pod 'MagicalRecord/Shorthand'
+#pod 'MagicalRecord/Shorthand'
+pod 'RealmSwift'
 
 end
 

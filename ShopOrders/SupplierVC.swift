@@ -7,13 +7,16 @@
 //
 
 //import CoreData
-import UIKit
+import Realm
 import SwiftForms
+import UIKit
 
 //import MagicalRecord
 
 
 class SupplierVC: FormViewController {
+    
+    var supplier : Supplier
     
     struct Static {
         static let nameTag = "name"
@@ -36,7 +39,11 @@ class SupplierVC: FormViewController {
     }
     
     required init(coder aDecoder: NSCoder) {
+        self.supplier = Supplier()
+
         super.init(coder: aDecoder)
+        
+        
         self.loadForm()
     }
     
@@ -44,6 +51,9 @@ class SupplierVC: FormViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        println(RLMRealm.defaultRealm().path)
+
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .Plain, target: self, action: "submit:")
         
@@ -76,73 +86,58 @@ class SupplierVC: FormViewController {
             self.view.endEditing(true)
 
             //check if empty, non if, so,
+ 
 
             let name = self.form.formValues()["name"] as? String
             let email = self.form.formValues()["email"] as? String
             let phone = self.form.formValues()["phone"] as? String
 
-            println(self.form.formValues()["email"])
+            
+
 
             //why self?
             
             if(self.isValid(name, email:email, phone:phone)) {
                 println("continue with elements ::")
                 
-//                let supps = Supplier.MR_findAll()
-//                println(supps)
-//                
-//                //check if exist
-//                let predicate = NSPredicate(format: "name = %@", name!)
-//                var supplierObj = Supplier.MR_findFirstWithPredicate(predicate) as? Supplier
-//                
-//                if(supplierObj == nil){
-//                    supplierObj = (Supplier.MR_createEntity() as! Supplier)
-//                }
-//  
-//                supplierObj?.name = name!
-//                supplierObj?.email = email!
-//                supplierObj?.phone = phone!
- 
+                let predicate = NSPredicate(format: "name BEGINSWITH [c]%@", name!) // 1
+                let saba = Supplier.objectsWithPredicate(predicate)
                 
-//                let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
- 
-                
-        
-                
-                
-//                MagicalRecord .saveWithBlock({ (NSManagedObjectContext) -> Void in
-//                    code
-//                }, completion: { (<#Bool#>, NSError!) -> Void in
-//                    code
-//                });
-                
-                
-//                NSManagedObjectContext.defaultContext().saveToPersistentStoreAndWait()
-                
-                
-//                MagicalRecord.saveWithBlock({ (context) -> Void in
-////                    (context as NSManagedObjectContext).
-//                    
-//                })
-                
-//                MagicalRecord .saveWithBlock({ (context ) -> Void in
-//
-//                    
-//                }, completion: { (error) -> Void in
-//                    
-//                })
-                
-                
-            
+                let realm = RLMRealm.defaultRealm()
 
-                //context?
-//                MagicalRecord.saveWithBlockAndWait({ (NSManagedObjectContext) -> Void in
-//                    
-//                })
+                if(saba.count == 0){
+                    
+                    let supplierInserto = Supplier()
+                    supplierInserto.name = name!
+                    supplierInserto.email = email!
+                    supplierInserto.phone = phone!
+                    
+                    realm.transactionWithBlock(){
+                        realm.addObject(supplierInserto)
+                    }
+                    self.supplier = supplierInserto
+
+                    
+                }else{
+                    
+                    //create inserto
+ 
+                    let supplierObj : Supplier = saba[0] as! Supplier
+                    realm.beginWriteTransaction()
+
+                    supplierObj.name = name!
+                    supplierObj.email = email!
+                    supplierObj.phone = phone!
+                    
+                    realm.commitWriteTransaction()
+ 
+                    self.supplier = supplierObj
+                }
                 
-                
+  
                 self.performSegueWithIdentifier("showProducts", sender: nil)
-            }
+                
+             }
             
             //segue
             
@@ -156,6 +151,14 @@ class SupplierVC: FormViewController {
         form.sections = [section5]
 
         self.form = form
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let productsVC = segue.destinationViewController as? Products {
+            productsVC.supplier = self.supplier
+            
+        }
+        
     }
     
     func isValidEmail(testStr:String) -> Bool {
@@ -203,13 +206,12 @@ class SupplierVC: FormViewController {
     func submit(UIBarButtonItem!) {
         
         let message = self.form.formValues().description
-        
-        
-        //        let alert: UIAlertView = UIAlertView(title: "Form output", message: message, delegate: nil, cancelButtonTitle: "OKs")
-        
-        
+ 
         let alert = UIAlertView(title: "Form output", message: message, delegate: nil, cancelButtonTitle: "OKs")
         
         alert.show()
     }
+    
+    
+ 
 }

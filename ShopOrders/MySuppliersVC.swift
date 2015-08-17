@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Realm
 
 class MySuppliersVC: UITableViewController {
 
@@ -26,7 +27,16 @@ class MySuppliersVC: UITableViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         
-        suppliers = Supplier.MR_findAllSortedBy("name", ascending: true) as! [Supplier]
+//        suppliers = Supplier.MR_findAllSortedBy("name", ascending: true) as! [Supplier]
+        
+        var supplieres : RLMResults {
+            get {
+                return Supplier.allObjects()
+            }
+        }
+        
+        println(supplieres)
+        
         table.reloadData()
     }
 
@@ -46,7 +56,8 @@ class MySuppliersVC: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return suppliers.count
+//        return suppliers.count
+        return 0
     }
 
 

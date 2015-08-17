@@ -14,9 +14,9 @@
 		B52FEAB21B7E1561002795AF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B52FEAB11B7E1561002795AF /* Images.xcassets */; };
 		B52FEAB51B7E1561002795AF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B52FEAB31B7E1561002795AF /* LaunchScreen.xib */; };
 		B52FEAC11B7E1561002795AF /* ShopOrdersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52FEAC01B7E1561002795AF /* ShopOrdersTests.swift */; };
+		B5AE5A021B82198D00A2B25E /* ProductsDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AE5A011B82198D00A2B25E /* ProductsDAO.swift */; };
 		B5D213161B7E414A00CDDC31 /* NewOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D213151B7E414A00CDDC31 /* NewOrder.swift */; };
 		B5DC48E81B8052470090D826 /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DC48E71B8052470090D826 /* Products.swift */; };
-		B5DC48EE1B806C630090D826 /* ShopOrders.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B5DC48EC1B806C630090D826 /* ShopOrders.xcdatamodeld */; };
 		B5DC48F51B806D670090D826 /* SupplierVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DC48F41B806D670090D826 /* SupplierVC.swift */; };
 		B5DC48F91B8095580090D826 /* Supplier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DC48F81B8095580090D826 /* Supplier.swift */; };
 		B5DC48FD1B80A0540090D826 /* MySuppliersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DC48FC1B80A0540090D826 /* MySuppliersVC.swift */; };
@@ -46,9 +46,9 @@
 		B52FEABA1B7E1561002795AF /* ShopOrdersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShopOrdersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B52FEABF1B7E1561002795AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B52FEAC01B7E1561002795AF /* ShopOrdersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopOrdersTests.swift; sourceTree = "<group>"; };
+		B5AE5A011B82198D00A2B25E /* ProductsDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductsDAO.swift; sourceTree = "<group>"; };
 		B5D213151B7E414A00CDDC31 /* NewOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewOrder.swift; sourceTree = "<group>"; };
 		B5DC48E71B8052470090D826 /* Products.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
-		B5DC48ED1B806C630090D826 /* ShopOrders.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ShopOrders.xcdatamodel; sourceTree = "<group>"; };
 		B5DC48F41B806D670090D826 /* SupplierVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupplierVC.swift; sourceTree = "<group>"; };
 		B5DC48F81B8095580090D826 /* Supplier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Supplier.swift; sourceTree = "<group>"; };
 		B5DC48FC1B80A0540090D826 /* MySuppliersVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySuppliersVC.swift; sourceTree = "<group>"; };
@@ -161,8 +161,8 @@
 		B5DC48EB1B806C370090D826 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B5DC48EC1B806C630090D826 /* ShopOrders.xcdatamodeld */,
 				B5DC48F81B8095580090D826 /* Supplier.swift */,
+				B5AE5A011B82198D00A2B25E /* ProductsDAO.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -321,7 +321,7 @@
 				B5DC48F51B806D670090D826 /* SupplierVC.swift in Sources */,
 				B52FEAAD1B7E1561002795AF /* SecondViewController.swift in Sources */,
 				B52FEAA91B7E1561002795AF /* AppDelegate.swift in Sources */,
-				B5DC48EE1B806C630090D826 /* ShopOrders.xcdatamodeld in Sources */,
+				B5AE5A021B82198D00A2B25E /* ProductsDAO.swift in Sources */,
 				B5DC48E81B8052470090D826 /* Products.swift in Sources */,
 				B5DC48F91B8095580090D826 /* Supplier.swift in Sources */,
 				B52FEAAB1B7E1561002795AF /* FirstViewController.swift in Sources */,
@@ -454,6 +454,10 @@
 			baseConfigurationReference = BA789F78907914E540B44965 /* Pods-ShopOrders.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = ShopOrders/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -475,6 +479,10 @@
 			baseConfigurationReference = 7B084E4F0AC2419DDB0671F1 /* Pods-ShopOrders.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = ShopOrders/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -556,19 +564,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		B5DC48EC1B806C630090D826 /* ShopOrders.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				B5DC48ED1B806C630090D826 /* ShopOrders.xcdatamodel */,
-			);
-			currentVersion = B5DC48ED1B806C630090D826 /* ShopOrders.xcdatamodel */;
-			path = ShopOrders.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = B52FEA9B1B7E1560002795AF /* Project object */;
 }
