@@ -6,15 +6,22 @@
 //  Copyright (c) 2015 Hyper. All rights reserved.
 //
 
+import Realm
 import UIKit
 
 class Products: UITableViewController {
 
+    var supplier : Supplier?
+    
+
+    
     override func viewDidLoad() {
         
-        self.title = "Products"
+        self.title = "\(supplier!.name) Products"
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "New", style: .Plain, target: self, action: "newBPressed:")
+        
+        println("tu int, :: \(supplier!)")
     }
     
     
@@ -40,6 +47,28 @@ class Products: UITableViewController {
             println(textField0!.text)
             println(textField1!.text)
 
+            self.isValid(textField0!.text, reference: textField1!.text)
+            
+            //crea producto!
+            let productInserto = ProductsDao()
+            productInserto.name = textField0!.text
+            
+            if((textField1!.text) != nil){
+                productInserto.ref = textField1!.text
+            }
+            
+            
+            let realm = RLMRealm.defaultRealm()
+            realm.beginWriteTransaction()
+            // Find objects
+//            var localTypes = FormTypeLocal.objectsWhere("formname = \(formname)")
+//            // Update one of those objects
+//            var existingForm = localTypes[0] as FormTypeLocal
+//            existingForm.customProp = "newVal"
+
+            self.supplier?.product = productInserto
+            // Wrap up transaction
+            realm.commitWriteTransaction()
             
         }
         actionSheetController.addAction(nextAction)
@@ -57,52 +86,22 @@ class Products: UITableViewController {
         
         //Present the AlertController
         self.presentViewController(actionSheetController, animated: true, completion: nil)
-        
-        //way1
-        
-//        var altMessage = UIAlertController(title: "Warning", message: "This is Alert Message", preferredStyle: UIAlertControllerStyle.Alert)
-//        altMessage.addAction(UIAlertAction(title: "Done", style: UIAlertActionStyle.Default, handler: nil))
-//        self.presentViewController(altMessage, animated: true, completion: nil)
-    
-        
-        
-        
-    // way 2
-//        var alertController = UIAlertController(title: "New Product", message: "Please enter", preferredStyle: UIAlertControllerStyle.Alert)
-//        
-//        let actionCancle = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) { ACTION in
-//            
-//        }
-//
-//        
-//        alertController.addAction(actionCancle)
-//        alertController.addTextFieldWithConfigurationHandler({(txtField: UITextField!) in
-//            txtField.placeholder = "Product Name"
-//            txtField.keyboardType = UIKeyboardType.NumberPad
-//        })
-//        
-//        
-//        
-//        alertController.addTextFieldWithConfigurationHandler({(txtField: UITextField!) in
-//            txtField.placeholder = "Reference"
-//            txtField.keyboardType = UIKeyboardType.NumberPad
-//        })
-//        presentViewController(alertController, animated: true, completion: nil)
-//    
-//        alertController.addAction(UIAlertAction(title: "Submit", style: UIAlertActionStyle.Default,handler: {
-//            
-//            (alert: UIAlertAction!) in
-//            if let textField = alertController.textFields?.first as? UITextField{
-//                println(textField.text)
-//            }
-//            
-//            var arraya = alertController.textFields
-//            
-//            
-//        }))
-//    
+     
     }
     
+    func isValid(name:String?, reference:String?) -> Bool {
+        if((name) == nil){
+            showAlert("MyOrders", message: "please enter product name")
+            return false
+        }
+
+        return true
+    }
     
+    func showAlert(title:String, message:String){
+        var altMessage = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        altMessage.addAction(UIAlertAction(title: "Done", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(altMessage, animated: true, completion: nil)
+    }
     
 }

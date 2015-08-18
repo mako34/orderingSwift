@@ -6,6 +6,9 @@
 //  Copyright (c) 2015 Hyper. All rights reserved.
 //
 
-#define MR_SHORTHAND
-#import <Foundation/Foundation.h> 
-#import "MagicalRecord/MagicalRecord.h"
+//#define MR_SHORTHAND
+#import <Foundation/Foundation.h>
+//#import "MagicalRecord/MagicalRecord.h"
+//#import <MagicalRecord/CoreData+MagicalRecord.h>
+//#import <MagicalRecord/MagicalRecordShorthand.h>
+

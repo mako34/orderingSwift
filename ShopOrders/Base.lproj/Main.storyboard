@@ -87,12 +87,13 @@
                     <navigationItem key="navigationItem" title="MySuppliers" id="WUl-qI-fEm">
                         <barButtonItem key="rightBarButtonItem" title="New" id="JpB-YJ-dTr">
                             <connections>
-                                <segue destination="wFI-bk-aT1" kind="show" id="6G6-oR-ZMH"/>
+                                <action selector="newButtonPressed:" destination="HX8-JN-o1p" id="4yB-vj-crW"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="table" destination="H4H-g1-1B4" id="Nde-A2-c2a"/>
+                        <segue destination="wFI-bk-aT1" kind="show" identifier="showSupplier" id="Gqv-3v-jed"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FPD-oR-pet" userLabel="First Responder" sceneMemberID="firstResponder"/>

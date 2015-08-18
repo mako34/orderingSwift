@@ -6,14 +6,20 @@
 //  Copyright (c) 2015 Hyper. All rights reserved.
 //
 
-import CoreData
-import UIKit
+//import CoreData
+import Realm
 import SwiftForms
+import UIKit
 
-import MagicalRecord
+//import MagicalRecord
 
+extension String {
+    var length: Int { return count(self)         }  // Swift 1.2
+}
 
 class SupplierVC: FormViewController {
+    
+    var supplier : Supplier?
     
     struct Static {
         static let nameTag = "name"
@@ -36,7 +42,11 @@ class SupplierVC: FormViewController {
     }
     
     required init(coder aDecoder: NSCoder) {
+//        self.supplier = Supplier()
+
         super.init(coder: aDecoder)
+        self.supplier = nil
+        
         self.loadForm()
     }
     
@@ -45,9 +55,20 @@ class SupplierVC: FormViewController {
         
         super.viewDidLoad()
         
+        println("me llego \(self.supplier)")
+
+        loadForm()
+        
+        println(RLMRealm.defaultRealm().path)
+
+        
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .Plain, target: self, action: "submit:")
         
+        
     }
+    
+    
+ 
     
     private func loadForm() {
         let form = FormDescriptor()
@@ -55,87 +76,100 @@ class SupplierVC: FormViewController {
         form.title = "Supplier"
         
         
+        println("tha supplier ::  \(supplier)")
+        
         let section5 = FormSectionDescriptor()
         
         var row = FormRowDescriptor(tag: Static.nameTag, rowType: .Name, title: "Name")
-        row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.placeholder" : "Supplier Name", "textField.textAlignment" : NSTextAlignment.Right.rawValue]
-        section5.addRow(row)
+  
+        if(supplier != nil){
+            row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.text" : supplier!.name, "textField.textAlignment" : NSTextAlignment.Right.rawValue]
+            section5.addRow(row)
+            
+            row = FormRowDescriptor(tag: Static.emailTag, rowType: .Email, title: "Email")
+            row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.text" : supplier!.email, "textField.textAlignment" : NSTextAlignment.Right.rawValue]
+            section5.addRow(row)
+            
+            
+            row = FormRowDescriptor(tag: Static.phoneTag, rowType: .Phone, title: "Phone")
+            row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.text" : supplier!.phone, "textField.textAlignment" : NSTextAlignment.Right.rawValue]
+            section5.addRow(row)
+ 
+        }else {
+            row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.placeholder" : "Supplier Name", "textField.textAlignment" : NSTextAlignment.Right.rawValue]
+            section5.addRow(row)
+            
+            row = FormRowDescriptor(tag: Static.emailTag, rowType: .Email, title: "Email")
+            row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.placeholder" : "john@gmail.com", "textField.textAlignment" : NSTextAlignment.Right.rawValue]
+            section5.addRow(row)
+            
+            
+            row = FormRowDescriptor(tag: Static.phoneTag, rowType: .Phone, title: "Phone")
+            row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.placeholder" : "e.g. 0034666777999", "textField.textAlignment" : NSTextAlignment.Right.rawValue]
+            section5.addRow(row)
+
+        }
         
-        row = FormRowDescriptor(tag: Static.emailTag, rowType: .Email, title: "Email")
-        row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.placeholder" : "john@gmail.com", "textField.textAlignment" : NSTextAlignment.Right.rawValue]
-        section5.addRow(row)
         
         
-        row = FormRowDescriptor(tag: Static.phoneTag, rowType: .Phone, title: "Phone")
-        row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.placeholder" : "e.g. 0034666777999", "textField.textAlignment" : NSTextAlignment.Right.rawValue]
-        section5.addRow(row)
-        
-        
+        //products button
         row = FormRowDescriptor(tag: Static.button, rowType: .Button, title: "Products")
         row.configuration[FormRowDescriptor.Configuration.DidSelectClosure] = {
             self.view.endEditing(true)
 
             //check if empty, non if, so,
+ 
 
             let name = self.form.formValues()["name"] as? String
             let email = self.form.formValues()["email"] as? String
             let phone = self.form.formValues()["phone"] as? String
 
-            println(self.form.formValues()["email"])
+            
+
 
             //why self?
             
             if(self.isValid(name, email:email, phone:phone)) {
                 println("continue with elements ::")
                 
-                let supps = Supplier.MR_findAll()
-                println(supps)
+                let predicate = NSPredicate(format: "name BEGINSWITH [c]%@", name!) // 1
+                let saba = Supplier.objectsWithPredicate(predicate)
                 
-                //check if exist
-                let predicate = NSPredicate(format: "name = %@", name!)
-                var supplierObj = Supplier.MR_findFirstWithPredicate(predicate) as? Supplier
-                
-                if(supplierObj == nil){
-                    supplierObj = (Supplier.MR_createEntity() as! Supplier)
-                }
-  
-                supplierObj?.name = name!
-                supplierObj?.email = email!
-                supplierObj?.phone = phone!
- 
-                
-//                let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
- 
-                
-            
-                
-                
-//                MagicalRecord .saveWithBlock({ (NSManagedObjectContext) -> Void in
-//                    code
-//                }, completion: { (<#Bool#>, NSError!) -> Void in
-//                    code
-//                });
-                
-//                NSManagedObjectContext .defaultContext().saveToPersistentStoreAndWait()
-                
- 
-//                MagicalRecord .saveWithBlock({ (NSManagedObjectContext ) -> Void in
-//
-//                }, completion: { (NSError!) -> Void in
-//                    
-//                })
-                
-                
-            
+                let realm = RLMRealm.defaultRealm()
 
-                //context?
-//                MagicalRecord.saveWithBlockAndWait({ (NSManagedObjectContext) -> Void in
-//                    
-//                })
+                if(saba.count == 0){
+                    
+                    let supplierInserto = Supplier()
+                    supplierInserto.name = name!
+                    supplierInserto.email = email!
+                    supplierInserto.phone = phone!
+                    
+                    realm.transactionWithBlock(){
+                        realm.addObject(supplierInserto)
+                    }
+                    self.supplier = supplierInserto
+
+                    
+                }else{
+                    
+                    //create inserto
+ 
+                    let supplierObj : Supplier = saba[0] as! Supplier
+                    realm.beginWriteTransaction()
+
+                    supplierObj.name = name!
+                    supplierObj.email = email!
+                    supplierObj.phone = phone!
+                    
+                    realm.commitWriteTransaction()
+ 
+                    self.supplier = supplierObj
+                }
                 
-                
+  
                 self.performSegueWithIdentifier("showProducts", sender: nil)
-            }
+                
+             }
             
             //segue
             
@@ -149,6 +183,14 @@ class SupplierVC: FormViewController {
         form.sections = [section5]
 
         self.form = form
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let productsVC = segue.destinationViewController as? Products {
+            productsVC.supplier = self.supplier
+            
+        }
+        
     }
     
     func isValidEmail(testStr:String) -> Bool {
@@ -196,13 +238,12 @@ class SupplierVC: FormViewController {
     func submit(UIBarButtonItem!) {
         
         let message = self.form.formValues().description
-        
-        
-        //        let alert: UIAlertView = UIAlertView(title: "Form output", message: message, delegate: nil, cancelButtonTitle: "OKs")
-        
-        
+ 
         let alert = UIAlertView(title: "Form output", message: message, delegate: nil, cancelButtonTitle: "OKs")
         
         alert.show()
     }
+    
+    
+ 
 }

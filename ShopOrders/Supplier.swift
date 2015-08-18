@@ -6,15 +6,12 @@
 //  Copyright (c) 2015 Hyper. All rights reserved.
 //
 
-import Foundation
-import CoreData
 
-@objc(Supplier)
+import Realm
 
-class Supplier: NSManagedObject {
-
-    @NSManaged var name: String
-    @NSManaged var email: String
-    @NSManaged var phone: String
-
+class Supplier: RLMObject {
+    dynamic var name = ""
+    dynamic var email = ""
+    dynamic var phone = ""
+    dynamic var product = ProductsDao()
 }
