@@ -19,7 +19,7 @@ extension String {
 
 class SupplierVC: FormViewController {
     
-    var supplier : Supplier
+    var supplier : Supplier?
     
     struct Static {
         static let nameTag = "name"
@@ -42,10 +42,10 @@ class SupplierVC: FormViewController {
     }
     
     required init(coder aDecoder: NSCoder) {
-        self.supplier = Supplier()
+//        self.supplier = Supplier()
 
         super.init(coder: aDecoder)
-        
+        self.supplier = nil
         
         self.loadForm()
     }
@@ -54,6 +54,10 @@ class SupplierVC: FormViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        println("me llego \(self.supplier)")
+
+        loadForm()
         
         println(RLMRealm.defaultRealm().path)
 
@@ -78,20 +82,20 @@ class SupplierVC: FormViewController {
         
         var row = FormRowDescriptor(tag: Static.nameTag, rowType: .Name, title: "Name")
   
-        if(supplier.name.length > 0){
-            row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.text" : supplier.name, "textField.textAlignment" : NSTextAlignment.Right.rawValue]
+        if(supplier != nil){
+            row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.text" : supplier!.name, "textField.textAlignment" : NSTextAlignment.Right.rawValue]
             section5.addRow(row)
             
             row = FormRowDescriptor(tag: Static.emailTag, rowType: .Email, title: "Email")
-            row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.text" : supplier.email, "textField.textAlignment" : NSTextAlignment.Right.rawValue]
+            row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.text" : supplier!.email, "textField.textAlignment" : NSTextAlignment.Right.rawValue]
             section5.addRow(row)
             
             
             row = FormRowDescriptor(tag: Static.phoneTag, rowType: .Phone, title: "Phone")
-            row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.text" : supplier.phone, "textField.textAlignment" : NSTextAlignment.Right.rawValue]
+            row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.text" : supplier!.phone, "textField.textAlignment" : NSTextAlignment.Right.rawValue]
             section5.addRow(row)
  
-        }else if (supplier.name.length == 0){
+        }else {
             row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.placeholder" : "Supplier Name", "textField.textAlignment" : NSTextAlignment.Right.rawValue]
             section5.addRow(row)
             

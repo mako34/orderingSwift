@@ -11,27 +11,29 @@ import Realm
 
 class MySuppliersVC: UITableViewController {
 
-    var supplier : Supplier
+    var supplier : Supplier?
+
 
     
     @IBOutlet var table: UITableView!
     var suppliers : RLMResults!
 //    var suppliers = RLMArray(objectClassName: Supplier.className())
 
-    
-    required init(coder aDecoder: NSCoder) {
-        self.supplier = Supplier()
-        
-        super.init(coder: aDecoder)
-        
-        
-        
-    }
+//    
+//    required init(coder aDecoder: NSCoder) {
+//        self.supplier = Supplier()
+//        
+//        super.init(coder: aDecoder)
+//        
+//        
+//        
+//    }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -41,6 +43,8 @@ class MySuppliersVC: UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
+        
+
         
 //        suppliers = Supplier.MR_findAllSortedBy("name", ascending: true) as! [Supplier]
         
@@ -153,11 +157,27 @@ class MySuppliersVC: UITableViewController {
     */
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let supplierVC = segue.destinationViewController as? SupplierVC {
-            supplierVC.supplier = self.supplier
-            
-        }
+
+        let supplierVC = segue.destinationViewController as? SupplierVC
         
+        println("tu sup \(self.supplier)")
+        
+        supplierVC!.supplier = self.supplier
+
+        
+        //        if let supplierVC = segue.destinationViewController as? SupplierVC {
+//            println(self.supplier)
+//            
+//            supplierVC.supplier = self.supplier
+//            
+//        }
+        
+    }
+    
+    @IBAction func newButtonPressed(sender: AnyObject) {
+        self.supplier = nil
+        self.performSegueWithIdentifier("showSupplier", sender: nil)
+
     }
 
 }
