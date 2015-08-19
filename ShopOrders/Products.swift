@@ -26,7 +26,6 @@ class Products: UITableViewController {
         println("transaction prods:: \(supplier?.products)")
         
         products = supplier?.products
-        
         table.reloadData()
     }
     
@@ -70,27 +69,16 @@ class Products: UITableViewController {
             self.supplier?.products .addObject(productInserto)
             
             realm.addObject(productInserto)
-
-            // Find objects
-//            var localTypes = FormTypeLocal.objectsWhere("formname = \(formname)")
-//            // Update one of those objects
-//            var existingForm = localTypes[0] as FormTypeLocal
-//            existingForm.customProp = "newVal"
-
-//            self.supplier?.product = productInserto
-            // Wrap up transaction
             realm.commitWriteTransaction()
             
-            //get supplier again
+            self.products = self.supplier?.products
             
-            let predicate = NSPredicate(format: "name BEGINSWITH [c]%@", self.supplier!.name)
-            let saba = Supplier.objectsWithPredicate(predicate)
+            println("tened ::  \(self.products)")
             
-            println("lista  :: \(saba)")
+            dispatch_async(dispatch_get_main_queue()) {
+                self.tableView.reloadData()
+            }
             
-//            ProductsDao.objectsWithPredicate(<#predicate: NSPredicate?#>)
-            
-            println(ProductsDao.allObjects())
             
         }
         actionSheetController.addAction(nextAction)
@@ -110,6 +98,8 @@ class Products: UITableViewController {
         self.presentViewController(actionSheetController, animated: true, completion: nil)
      
     }
+    
+ 
     
     func isValid(name:String?, reference:String?) -> Bool {
         if((name) == nil){
@@ -143,7 +133,6 @@ class Products: UITableViewController {
     
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
         
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "CellProducts")
 
@@ -190,23 +179,26 @@ class Products: UITableViewController {
     
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-//        if editingStyle == .Delete {
-//            // Delete the row from the data source
-//            //tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-//            
-//            //alert n delete!
-//            let realm = RLMRealm.defaultRealm() //1
-//            let objectToDelete = self.suppliers[UInt(indexPath.row)] as! Supplier //2
-//            realm.beginWriteTransaction() //3
-//            realm.deleteObject(objectToDelete) //4
-//            realm.commitWriteTransaction() //5
-//            
-//            self.suppliers = Supplier.allObjects()
-//            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade) //7
-//            
-//        } else if editingStyle == .Insert {
-//            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-//        }    
+        if editingStyle == .Delete {
+            // Delete the row from the data source
+            //tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            
+            //alert n delete!
+            let realm = RLMRealm.defaultRealm() //1
+            
+            let objectToDelete = self.products![UInt(indexPath.row)] as! ProductsDao //2
+            
+            realm.beginWriteTransaction() //3
+            realm.deleteObject(objectToDelete) //4
+            realm.commitWriteTransaction() //5
+            
+            products = supplier?.products
+            
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade) //7
+            
+        } else if editingStyle == .Insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        }    
     }
 
     
