@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B513E0AD1B84A1C400E9CC72 /* OrderDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = B513E0AC1B84A1C400E9CC72 /* OrderDao.swift */; };
+		B513E0AF1B84A24800E9CC72 /* ProductOrderedDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = B513E0AE1B84A24800E9CC72 /* ProductOrderedDao.swift */; };
+		B513E0B11B84B0F800E9CC72 /* ChooseProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = B513E0B01B84B0F800E9CC72 /* ChooseProduct.swift */; };
+		B513E0B31B84B78400E9CC72 /* FriendItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B513E0B21B84B78400E9CC72 /* FriendItem.swift */; };
 		B52FEAA91B7E1561002795AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52FEAA81B7E1561002795AF /* AppDelegate.swift */; };
-		B52FEAAB1B7E1561002795AF /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52FEAAA1B7E1561002795AF /* FirstViewController.swift */; };
-		B52FEAAD1B7E1561002795AF /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52FEAAC1B7E1561002795AF /* SecondViewController.swift */; };
 		B52FEAB01B7E1561002795AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B52FEAAE1B7E1561002795AF /* Main.storyboard */; };
 		B52FEAB21B7E1561002795AF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B52FEAB11B7E1561002795AF /* Images.xcassets */; };
 		B52FEAB51B7E1561002795AF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B52FEAB31B7E1561002795AF /* LaunchScreen.xib */; };
@@ -36,11 +38,13 @@
 
 /* Begin PBXFileReference section */
 		7B084E4F0AC2419DDB0671F1 /* Pods-ShopOrders.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShopOrders.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShopOrders/Pods-ShopOrders.release.xcconfig"; sourceTree = "<group>"; };
+		B513E0AC1B84A1C400E9CC72 /* OrderDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderDao.swift; sourceTree = "<group>"; };
+		B513E0AE1B84A24800E9CC72 /* ProductOrderedDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductOrderedDao.swift; sourceTree = "<group>"; };
+		B513E0B01B84B0F800E9CC72 /* ChooseProduct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseProduct.swift; sourceTree = "<group>"; };
+		B513E0B21B84B78400E9CC72 /* FriendItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendItem.swift; sourceTree = "<group>"; };
 		B52FEAA31B7E1561002795AF /* ShopOrders.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShopOrders.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B52FEAA71B7E1561002795AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B52FEAA81B7E1561002795AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B52FEAAA1B7E1561002795AF /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		B52FEAAC1B7E1561002795AF /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		B52FEAAF1B7E1561002795AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B52FEAB11B7E1561002795AF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B52FEAB41B7E1561002795AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -54,7 +58,6 @@
 		B5DC48F41B806D670090D826 /* SupplierVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupplierVC.swift; sourceTree = "<group>"; };
 		B5DC48F81B8095580090D826 /* Supplier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Supplier.swift; sourceTree = "<group>"; };
 		B5DC48FC1B80A0540090D826 /* MySuppliersVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySuppliersVC.swift; sourceTree = "<group>"; };
-		B5DC48FE1B80AC850090D826 /* ShopOrders-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ShopOrders-Bridging-Header.h"; sourceTree = "<group>"; };
 		BA789F78907914E540B44965 /* Pods-ShopOrders.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShopOrders.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShopOrders/Pods-ShopOrders.debug.xcconfig"; sourceTree = "<group>"; };
 		BBA158B2BE8D3C1547AD57DC /* Pods_ShopOrders.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShopOrders.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -118,13 +121,10 @@
 		B52FEAA51B7E1561002795AF /* ShopOrders */ = {
 			isa = PBXGroup;
 			children = (
-				B5DC48FE1B80AC850090D826 /* ShopOrders-Bridging-Header.h */,
 				B52FEAA81B7E1561002795AF /* AppDelegate.swift */,
-				B52FEAAA1B7E1561002795AF /* FirstViewController.swift */,
-				B52FEAAC1B7E1561002795AF /* SecondViewController.swift */,
 				B5D213151B7E414A00CDDC31 /* NewOrder.swift */,
+				B513E0B01B84B0F800E9CC72 /* ChooseProduct.swift */,
 				B5DC48E71B8052470090D826 /* Products.swift */,
-				B5AE5A031B835D7700A2B25E /* RLMSupport.swift */,
 				B5DC48F41B806D670090D826 /* SupplierVC.swift */,
 				B5DC48FC1B80A0540090D826 /* MySuppliersVC.swift */,
 				B52FEAAE1B7E1561002795AF /* Main.storyboard */,
@@ -164,8 +164,12 @@
 		B5DC48EB1B806C370090D826 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B5AE5A031B835D7700A2B25E /* RLMSupport.swift */,
 				B5DC48F81B8095580090D826 /* Supplier.swift */,
 				B5AE5A011B82198D00A2B25E /* ProductsDAO.swift */,
+				B513E0AC1B84A1C400E9CC72 /* OrderDao.swift */,
+				B513E0AE1B84A24800E9CC72 /* ProductOrderedDao.swift */,
+				B513E0B21B84B78400E9CC72 /* FriendItem.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -322,13 +326,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5DC48F51B806D670090D826 /* SupplierVC.swift in Sources */,
-				B52FEAAD1B7E1561002795AF /* SecondViewController.swift in Sources */,
 				B52FEAA91B7E1561002795AF /* AppDelegate.swift in Sources */,
+				B513E0B31B84B78400E9CC72 /* FriendItem.swift in Sources */,
 				B5AE5A021B82198D00A2B25E /* ProductsDAO.swift in Sources */,
+				B513E0AD1B84A1C400E9CC72 /* OrderDao.swift in Sources */,
 				B5DC48E81B8052470090D826 /* Products.swift in Sources */,
 				B5DC48F91B8095580090D826 /* Supplier.swift in Sources */,
-				B52FEAAB1B7E1561002795AF /* FirstViewController.swift in Sources */,
 				B5AE5A041B835D7700A2B25E /* RLMSupport.swift in Sources */,
+				B513E0B11B84B0F800E9CC72 /* ChooseProduct.swift in Sources */,
+				B513E0AF1B84A24800E9CC72 /* ProductOrderedDao.swift in Sources */,
 				B5D213161B7E414A00CDDC31 /* NewOrder.swift in Sources */,
 				B5DC48FD1B80A0540090D826 /* MySuppliersVC.swift in Sources */,
 			);
@@ -473,7 +479,8 @@
 					"\"CoreData\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "ShopOrders/ShopOrders-Bridging-Header.h";
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -498,7 +505,8 @@
 					"\"CoreData\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "ShopOrders/ShopOrders-Bridging-Header.h";
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
