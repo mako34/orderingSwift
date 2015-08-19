@@ -10,6 +10,7 @@ import UIKit
 
 class NewOrder: UIViewController{
 
+    @IBOutlet weak var orderName: UITextField!
     override func viewDidLoad() {
 
         self.title = "New Order"
@@ -19,8 +20,23 @@ class NewOrder: UIViewController{
     
     func addProduct(UIBarButtonItem!){
     
-        self.performSegueWithIdentifier("presentModalNewProduct", sender: nil)
+        if(orderName.text.length == 0){
+            
+            showAlert("MyOrders", message: "Please enter order name")
+            
+            
+        }else {
+            self.performSegueWithIdentifier("presentModalNewProduct", sender: nil)
+
+        }
+
         
+    }
+    
+    func showAlert(title:String, message:String){
+        var altMessage = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        altMessage.addAction(UIAlertAction(title: "Done", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(altMessage, animated: true, completion: nil)
     }
     
 }

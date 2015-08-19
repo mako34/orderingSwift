@@ -11,6 +11,7 @@
 		B513E0AF1B84A24800E9CC72 /* ProductOrderedDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = B513E0AE1B84A24800E9CC72 /* ProductOrderedDao.swift */; };
 		B513E0B11B84B0F800E9CC72 /* ChooseProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = B513E0B01B84B0F800E9CC72 /* ChooseProduct.swift */; };
 		B513E0B31B84B78400E9CC72 /* FriendItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B513E0B21B84B78400E9CC72 /* FriendItem.swift */; };
+		B513E0B51B84BE8600E9CC72 /* TODO.txt in Resources */ = {isa = PBXBuildFile; fileRef = B513E0B41B84BE8600E9CC72 /* TODO.txt */; };
 		B52FEAA91B7E1561002795AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52FEAA81B7E1561002795AF /* AppDelegate.swift */; };
 		B52FEAB01B7E1561002795AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B52FEAAE1B7E1561002795AF /* Main.storyboard */; };
 		B52FEAB21B7E1561002795AF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B52FEAB11B7E1561002795AF /* Images.xcassets */; };
@@ -42,6 +43,7 @@
 		B513E0AE1B84A24800E9CC72 /* ProductOrderedDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductOrderedDao.swift; sourceTree = "<group>"; };
 		B513E0B01B84B0F800E9CC72 /* ChooseProduct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseProduct.swift; sourceTree = "<group>"; };
 		B513E0B21B84B78400E9CC72 /* FriendItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendItem.swift; sourceTree = "<group>"; };
+		B513E0B41B84BE8600E9CC72 /* TODO.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO.txt; sourceTree = "<group>"; };
 		B52FEAA31B7E1561002795AF /* ShopOrders.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShopOrders.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B52FEAA71B7E1561002795AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B52FEAA81B7E1561002795AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				B52FEAB11B7E1561002795AF /* Images.xcassets */,
 				B52FEAB31B7E1561002795AF /* LaunchScreen.xib */,
 				B52FEAA61B7E1561002795AF /* Supporting Files */,
+				B513E0B41B84BE8600E9CC72 /* TODO.txt */,
 			);
 			path = ShopOrders;
 			sourceTree = "<group>";
@@ -257,6 +260,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B513E0B51B84BE8600E9CC72 /* TODO.txt in Resources */,
 				B52FEAB01B7E1561002795AF /* Main.storyboard in Resources */,
 				B52FEAB51B7E1561002795AF /* LaunchScreen.xib in Resources */,
 				B52FEAB21B7E1561002795AF /* Images.xcassets in Resources */,

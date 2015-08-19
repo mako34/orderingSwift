@@ -74,12 +74,6 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Order name" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CEI-ki-1g0">
-                                <rect key="frame" x="155" y="136" width="204" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Items ordered" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jcg-gO-VdK">
                                 <rect key="frame" x="155" y="165" width="204" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -90,11 +84,15 @@
                                 <rect key="frame" x="0.0" y="194" width="375" height="423"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4FQ-ah-K9z">
+                                <rect key="frame" x="164" y="132" width="200" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Jcg-gO-VdK" firstAttribute="trailing" secondItem="biy-Av-iN8" secondAttribute="trailingMargin" id="48C-Rz-mgb"/>
-                            <constraint firstItem="CEI-ki-1g0" firstAttribute="trailing" secondItem="biy-Av-iN8" secondAttribute="trailingMargin" id="Bgw-2G-5Lw"/>
                             <constraint firstItem="ZWf-Gl-Col" firstAttribute="leading" secondItem="biy-Av-iN8" secondAttribute="leadingMargin" constant="18" id="Bil-YF-8yP"/>
                             <constraint firstItem="b77-KN-drO" firstAttribute="leading" secondItem="biy-Av-iN8" secondAttribute="leadingMargin" constant="18" id="Jdt-4G-XfV"/>
                             <constraint firstItem="haq-2z-fyi" firstAttribute="trailing" secondItem="biy-Av-iN8" secondAttribute="trailingMargin" id="bEL-3o-DgJ"/>
@@ -104,6 +102,7 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="orderName" destination="4FQ-ah-K9z" id="wNh-oF-qD5"/>
                         <segue destination="kEg-qD-Q1k" kind="presentation" identifier="presentModalNewProduct" id="1Ad-bf-xRH"/>
                     </connections>
                 </viewController>
