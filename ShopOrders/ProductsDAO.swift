@@ -12,5 +12,4 @@ import Realm
 class ProductsDao: RLMObject {
     dynamic var name = ""
     dynamic var ref = ""
-    
 }

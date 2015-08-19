@@ -62,7 +62,7 @@ class SupplierVC: FormViewController {
         println(RLMRealm.defaultRealm().path)
 
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .Plain, target: self, action: "submit:")
+//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .Plain, target: self, action: "submit:")
         
         
     }
@@ -118,62 +118,48 @@ class SupplierVC: FormViewController {
             self.view.endEditing(true)
 
             //check if empty, non if, so,
- 
-
-            let name = self.form.formValues()["name"] as? String
-            let email = self.form.formValues()["email"] as? String
-            let phone = self.form.formValues()["phone"] as? String
-
             
-
-
-            //why self?
-            
-            if(self.isValid(name, email:email, phone:phone)) {
-                println("continue with elements ::")
-                
-                let predicate = NSPredicate(format: "name BEGINSWITH [c]%@", name!) // 1
-                let saba = Supplier.objectsWithPredicate(predicate)
-                
-                let realm = RLMRealm.defaultRealm()
-
-                if(saba.count == 0){
+            if(self.supplier == nil){
+                let name = self.form.formValues()["name"] as? String
+                let email = self.form.formValues()["email"] as? String
+                let phone = self.form.formValues()["phone"] as? String
+                if(self.isValid(name, email:email, phone:phone)) {
+                    let predicate = NSPredicate(format: "name BEGINSWITH [c]%@", name!)
+                    let saba = Supplier.objectsWithPredicate(predicate)
+                    let realm = RLMRealm.defaultRealm()
                     
-                    let supplierInserto = Supplier()
-                    supplierInserto.name = name!
-                    supplierInserto.email = email!
-                    supplierInserto.phone = phone!
-                    
-                    realm.transactionWithBlock(){
-                        realm.addObject(supplierInserto)
+                    if(saba.count == 0){
+                        let supplierInserto = Supplier()
+                        supplierInserto.name = name!
+                        supplierInserto.email = email!
+                        supplierInserto.phone = phone!
+//                        supplierInserto.product =  [ProductsDao()]
+                        
+                        realm.transactionWithBlock(){
+                            realm.addObject(supplierInserto)
+                        }
+                        self.supplier = supplierInserto
+                        
+                    }else{
+                        let supplierObj : Supplier = saba[0] as! Supplier
+                        realm.beginWriteTransaction()
+                        supplierObj.name = name!
+                        supplierObj.email = email!
+                        supplierObj.phone = phone!
+                        realm.commitWriteTransaction()
+                        self.supplier = supplierObj
                     }
-                    self.supplier = supplierInserto
-
-                    
-                }else{
-                    
-                    //create inserto
- 
-                    let supplierObj : Supplier = saba[0] as! Supplier
-                    realm.beginWriteTransaction()
-
-                    supplierObj.name = name!
-                    supplierObj.email = email!
-                    supplierObj.phone = phone!
-                    
-                    realm.commitWriteTransaction()
- 
-                    self.supplier = supplierObj
+                    self.performSegueWithIdentifier("showProducts", sender: nil)
                 }
-                
-  
+            }else{
                 self.performSegueWithIdentifier("showProducts", sender: nil)
-                
-             }
-            
+
+            }
+
             //segue
             
             } as DidSelectClosure
+        
         section5.addRow(row)
         
         section5.headerTitle = "Details"
@@ -203,7 +189,6 @@ class SupplierVC: FormViewController {
     
     func isValid(name:String?, email:String?, phone:String?) -> Bool {
  
-        
         if ((name) == nil){
             showAlert("MyOrders", message: "Please enter business name")
             return false;

@@ -15,6 +15,7 @@
 		B52FEAB51B7E1561002795AF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B52FEAB31B7E1561002795AF /* LaunchScreen.xib */; };
 		B52FEAC11B7E1561002795AF /* ShopOrdersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52FEAC01B7E1561002795AF /* ShopOrdersTests.swift */; };
 		B5AE5A021B82198D00A2B25E /* ProductsDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AE5A011B82198D00A2B25E /* ProductsDAO.swift */; };
+		B5AE5A041B835D7700A2B25E /* RLMSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AE5A031B835D7700A2B25E /* RLMSupport.swift */; };
 		B5D213161B7E414A00CDDC31 /* NewOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D213151B7E414A00CDDC31 /* NewOrder.swift */; };
 		B5DC48E81B8052470090D826 /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DC48E71B8052470090D826 /* Products.swift */; };
 		B5DC48F51B806D670090D826 /* SupplierVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DC48F41B806D670090D826 /* SupplierVC.swift */; };
@@ -47,6 +48,7 @@
 		B52FEABF1B7E1561002795AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B52FEAC01B7E1561002795AF /* ShopOrdersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopOrdersTests.swift; sourceTree = "<group>"; };
 		B5AE5A011B82198D00A2B25E /* ProductsDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductsDAO.swift; sourceTree = "<group>"; };
+		B5AE5A031B835D7700A2B25E /* RLMSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLMSupport.swift; sourceTree = "<group>"; };
 		B5D213151B7E414A00CDDC31 /* NewOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewOrder.swift; sourceTree = "<group>"; };
 		B5DC48E71B8052470090D826 /* Products.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
 		B5DC48F41B806D670090D826 /* SupplierVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupplierVC.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 				B52FEAAC1B7E1561002795AF /* SecondViewController.swift */,
 				B5D213151B7E414A00CDDC31 /* NewOrder.swift */,
 				B5DC48E71B8052470090D826 /* Products.swift */,
+				B5AE5A031B835D7700A2B25E /* RLMSupport.swift */,
 				B5DC48F41B806D670090D826 /* SupplierVC.swift */,
 				B5DC48FC1B80A0540090D826 /* MySuppliersVC.swift */,
 				B52FEAAE1B7E1561002795AF /* Main.storyboard */,
@@ -325,6 +328,7 @@
 				B5DC48E81B8052470090D826 /* Products.swift in Sources */,
 				B5DC48F91B8095580090D826 /* Supplier.swift in Sources */,
 				B52FEAAB1B7E1561002795AF /* FirstViewController.swift in Sources */,
+				B5AE5A041B835D7700A2B25E /* RLMSupport.swift in Sources */,
 				B5D213161B7E414A00CDDC31 /* NewOrder.swift in Sources */,
 				B5DC48FD1B80A0540090D826 /* MySuppliersVC.swift in Sources */,
 			);

@@ -9,11 +9,12 @@
 import Realm
 import UIKit
 
+
 class Products: UITableViewController {
 
     var supplier : Supplier?
     
-
+    @IBOutlet var table: UITableView!
     
     override func viewDidLoad() {
         
@@ -21,7 +22,22 @@ class Products: UITableViewController {
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "New", style: .Plain, target: self, action: "newBPressed:")
         
-        println("tu int, :: \(supplier!)")
+        
+        let predicate = NSPredicate(format: "name BEGINSWITH [c]%@", self.supplier!.name)
+        
+        
+        let productsArraya = self.supplier?.product as ProductsDao?
+        
+        
+        
+        
+//        let saba = ProductsDao.objectsWithPredicate(predicate)
+//        
+//        let suio = ProductsDao.objectsWhere(<#predicateFormat: String#>, <#args: CVarArgType#>...)
+// 
+//        
+//        let realm = RLMRealm.defaultRealm()
+        
     }
     
     
@@ -50,6 +66,9 @@ class Products: UITableViewController {
             self.isValid(textField0!.text, reference: textField1!.text)
             
             //crea producto!
+            let realm = RLMRealm.defaultRealm()
+            realm.beginWriteTransaction()
+            
             let productInserto = ProductsDao()
             productInserto.name = textField0!.text
             
@@ -57,18 +76,28 @@ class Products: UITableViewController {
                 productInserto.ref = textField1!.text
             }
             
-            
-            let realm = RLMRealm.defaultRealm()
-            realm.beginWriteTransaction()
+            realm.addObject(productInserto)
+
             // Find objects
 //            var localTypes = FormTypeLocal.objectsWhere("formname = \(formname)")
 //            // Update one of those objects
 //            var existingForm = localTypes[0] as FormTypeLocal
 //            existingForm.customProp = "newVal"
 
-            self.supplier?.product = productInserto
+//            self.supplier?.product = productInserto
             // Wrap up transaction
             realm.commitWriteTransaction()
+            
+            //get supplier again
+            
+            let predicate = NSPredicate(format: "name BEGINSWITH [c]%@", self.supplier!.name)
+            let saba = Supplier.objectsWithPredicate(predicate)
+            
+            println("lista  :: \(saba)")
+            
+//            ProductsDao.objectsWithPredicate(<#predicate: NSPredicate?#>)
+            
+            println(ProductsDao.allObjects())
             
         }
         actionSheetController.addAction(nextAction)
