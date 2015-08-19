@@ -9,9 +9,12 @@
 
 import Realm
 
+
 class Supplier: RLMObject {
     dynamic var name = ""
     dynamic var email = ""
     dynamic var phone = ""
-    dynamic var product = ProductsDao()
+    
+    dynamic var products = RLMArray(objectClassName: ProductsDao.className())
+    
 }
