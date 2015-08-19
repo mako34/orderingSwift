@@ -124,7 +124,11 @@
         <!--Products-->
         <scene sceneID="euG-6v-R24">
             <objects>
-                <viewController id="Zz2-cB-XLB" customClass="Products" customModule="ShopOrders" customModuleProvider="target" sceneMemberID="viewController"/>
+                <viewController id="Zz2-cB-XLB" customClass="Products" customModule="ShopOrders" customModuleProvider="target" sceneMemberID="viewController">
+                    <connections>
+                        <outlet property="table" destination="PeE-qw-cyx" id="d0D-tP-Feb"/>
+                    </connections>
+                </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8tp-Wk-rtF" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="PeE-qw-cyx">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>

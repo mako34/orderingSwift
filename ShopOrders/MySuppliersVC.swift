@@ -10,26 +10,11 @@ import UIKit
 import Realm
 
 class MySuppliersVC: UITableViewController {
-
     var supplier : Supplier?
 
-
-    
     @IBOutlet var table: UITableView!
     var suppliers : RLMResults!
-//    var suppliers = RLMArray(objectClassName: Supplier.className())
 
-//    
-//    required init(coder aDecoder: NSCoder) {
-//        self.supplier = Supplier()
-//        
-//        super.init(coder: aDecoder)
-//        
-//        
-//        
-//    }
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -43,9 +28,7 @@ class MySuppliersVC: UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
-        
 
-        
 //        suppliers = Supplier.MR_findAllSortedBy("name", ascending: true) as! [Supplier]
         
         var supplieres : RLMResults {
@@ -55,8 +38,7 @@ class MySuppliersVC: UITableViewController {
         }
  
         self.suppliers = supplieres
-        
-        
+
         println(supplieres)
         
         table.reloadData()
