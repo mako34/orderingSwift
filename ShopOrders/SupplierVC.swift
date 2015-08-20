@@ -175,7 +175,6 @@ class SupplierVC: FormViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let productsVC = segue.destinationViewController as? Products {
             productsVC.supplier = self.supplier
-            
         }
         
     }

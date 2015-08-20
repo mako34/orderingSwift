@@ -6,10 +6,13 @@
 //  Copyright (c) 2015 Hyper. All rights reserved.
 //
 
+import Realm
 import UIKit
 
 class NewOrder: UIViewController{
 
+    var order : OrderDao?
+    
     @IBOutlet weak var orderName: UITextField!
     override func viewDidLoad() {
 
@@ -21,11 +24,20 @@ class NewOrder: UIViewController{
     func addProduct(UIBarButtonItem!){
     
         if(orderName.text.length == 0){
-            
             showAlert("MyOrders", message: "Please enter order name")
             
             
         }else {
+            
+            let realm = RLMRealm.defaultRealm()
+            
+            let orderInserto = OrderDao()
+            orderInserto.name = orderName.text
+            order = orderInserto
+            realm.transactionWithBlock(){
+                realm.addObject(orderInserto)
+            }
+            
             self.performSegueWithIdentifier("presentModalNewProduct", sender: nil)
 
         }
@@ -37,6 +49,13 @@ class NewOrder: UIViewController{
         var altMessage = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
         altMessage.addAction(UIAlertAction(title: "Done", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(altMessage, animated: true, completion: nil)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let productsVC = segue.destinationViewController as? ChooseProduct {
+            productsVC.order = order
+        }
+        
     }
     
 }

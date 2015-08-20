@@ -11,7 +11,7 @@ import Realm
 
 
 class OrderDao: RLMObject {
-    dynamic var date = ""
+    dynamic var date = NSDate() 
     dynamic var name = ""
     dynamic var repeat = ""
     

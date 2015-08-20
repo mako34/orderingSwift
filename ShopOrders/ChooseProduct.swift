@@ -16,6 +16,8 @@ class ChooseProduct: UIViewController, UITableViewDelegate, UITableViewDataSourc
 {
     
     var Products : RLMResults!
+    var order : OrderDao?
+    var productItem : ProductsDao?
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -36,8 +38,10 @@ class ChooseProduct: UIViewController, UITableViewDelegate, UITableViewDataSourc
         
         Products = products
         
+        println("me entro \(order)")
+        
     }
-
+ 
     // MARK: - Table view data source
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -73,7 +77,7 @@ class ChooseProduct: UIViewController, UITableViewDelegate, UITableViewDataSourc
         tableView .deselectRowAtIndexPath(indexPath, animated: true)
         
         let index = UInt(indexPath.row)
-        let productItem = self.Products.objectAtIndex(index) as! ProductsDao
+        productItem = self.Products.objectAtIndex(index) as? ProductsDao
         
         
         println("selecto \(productItem)")
@@ -91,19 +95,32 @@ class ChooseProduct: UIViewController, UITableViewDelegate, UITableViewDataSourc
             numberOfProducts.append(count)
             
         }
-        
-        
-        ActionSheetStringPicker.showPickerWithTitle("How many pickels", rows: numberOfProducts, initialSelection: 0, doneBlock: {
+                
+        ActionSheetStringPicker.showPickerWithTitle("How many \(productItem!.name)", rows: numberOfProducts, initialSelection: 0, doneBlock: {
             picker, value, index in
             
             println("value = \(value)")
             println("index = \(index)")
             println("picker = \(picker)")
+            
+            let realm = RLMRealm.defaultRealm()
+            realm.beginWriteTransaction()
+            
+            let productOrderInserto = ProductOrderedDao()
+            productOrderInserto.name = self.productItem!.name
+            productOrderInserto.quantity = String(value)
+            self.order?.productsOrdered.addObject(productOrderInserto)
+            
+            realm.addObject(productOrderInserto)
+            realm.commitWriteTransaction()
+            
+            //nota, necesito estas 4 lineas de arriba? magical era mas magico!
+            
+            self .dismissViewControllerAnimated(true, completion: nil)
+            
             return
             }, cancelBlock: { ActionStringCancelBlock in return }, origin: self.tableView)
 
- 
-        
     }
     
     
