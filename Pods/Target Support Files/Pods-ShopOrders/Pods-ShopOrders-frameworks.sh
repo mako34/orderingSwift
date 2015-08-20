@@ -52,11 +52,13 @@ code_sign_if_enabled() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework 'Pods-ShopOrders/ActionSheetPicker_3_0.framework'
   install_framework 'Pods-ShopOrders/Realm.framework'
   install_framework 'Pods-ShopOrders/RealmSwift.framework'
   install_framework 'Pods-ShopOrders/SwiftForms.framework'
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework 'Pods-ShopOrders/ActionSheetPicker_3_0.framework'
   install_framework 'Pods-ShopOrders/Realm.framework'
   install_framework 'Pods-ShopOrders/RealmSwift.framework'
   install_framework 'Pods-ShopOrders/SwiftForms.framework'

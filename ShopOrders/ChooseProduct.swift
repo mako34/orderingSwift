@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Hyper. All rights reserved.
 //
 
+import ActionSheetPicker_3_0
 import Foundation
 import Realm
 import UIKit
@@ -34,9 +35,6 @@ class ChooseProduct: UIViewController, UITableViewDelegate, UITableViewDataSourc
         }
         
         Products = products
-        
-        println("tus prods :: \(Products)")
-
         
     }
 
@@ -81,6 +79,31 @@ class ChooseProduct: UIViewController, UITableViewDelegate, UITableViewDataSourc
         println("selecto \(productItem)")
         
         //            self.performSegueWithIdentifier("showSupplier", sender: nil)
+        
+        
+        var numberOfProducts : [Int] = []
+        var i = 0
+        var count : Int = 0
+        for i in 1...50 {
+//            numberOfProducts += count
+            
+            count += 1
+            numberOfProducts.append(count)
+            
+        }
+        
+        
+        ActionSheetStringPicker.showPickerWithTitle("How many pickels", rows: numberOfProducts, initialSelection: 0, doneBlock: {
+            picker, value, index in
+            
+            println("value = \(value)")
+            println("index = \(index)")
+            println("picker = \(picker)")
+            return
+            }, cancelBlock: { ActionStringCancelBlock in return }, origin: self.tableView)
+
+ 
+        
     }
     
     

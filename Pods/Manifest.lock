@@ -1,4 +1,5 @@
 PODS:
+  - ActionSheetPicker-3.0 (1.7.0)
   - Realm (0.94.1):
     - Realm/Headers (= 0.94.1)
   - Realm/Headers (0.94.1)
@@ -7,10 +8,12 @@ PODS:
   - SwiftForms (1.0)
 
 DEPENDENCIES:
+  - ActionSheetPicker-3.0
   - RealmSwift
   - SwiftForms
 
 SPEC CHECKSUMS:
+  ActionSheetPicker-3.0: 6516052442fc8ca8f3cc4b3c7aa0436de12373df
   Realm: d999a6cf0b41577a077349c9cc9d496cc62a7d17
   RealmSwift: 06b60ff5b1338755654d39aab44ac38001600f76
   SwiftForms: b16bf2978e6eb6617bc9f438322a1daa6c3d2dbd

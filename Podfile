@@ -10,8 +10,9 @@ use_frameworks!
 
 target 'ShopOrders' do
 pod 'SwiftForms'
-#pod 'MagicalRecord/Shorthand'
 pod 'RealmSwift'
+
+pod 'ActionSheetPicker-3.0'
 
 end
 
