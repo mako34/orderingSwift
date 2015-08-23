@@ -14,6 +14,7 @@ class OrderDao: RLMObject {
     dynamic var date = NSDate() 
     dynamic var name = ""
     dynamic var repeat = ""
+    dynamic var submitted = Bool(false)
     
     dynamic var productsOrdered = RLMArray(objectClassName: ProductOrderedDao.className())
     

@@ -17,6 +17,8 @@ class NewOrder: BaseViewController{
     @IBOutlet weak var orderName: UITextField!
     @IBOutlet weak var itemsOrdered: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var submitButton: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +60,10 @@ class NewOrder: BaseViewController{
             orderDate.text = shortDate(order!.date)
             orderName.text = order?.name
             itemsOrdered.text = String(stringInterpolationSegment: order!.productsOrdered.count)
+            
+            if(order!.productsOrdered.count > 0){
+                submitButton.alpha = 1
+            }
             
             tableView .reloadData()
         }
@@ -204,6 +210,9 @@ class NewOrder: BaseViewController{
     */
     
     
+    @IBAction func submitButtonPressed(sender: AnyObject) {
+        println("lane")
+    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let productsVC = segue.destinationViewController as? ChooseProduct {

@@ -123,6 +123,20 @@
                                     <outlet property="delegate" destination="iLu-Ew-2cG" id="e9g-wi-fsN"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pi4-Ke-cfQ" userLabel="submitButton">
+                                <rect key="frame" x="122" y="72" width="130" height="30"/>
+                                <color key="backgroundColor" red="0.3294117647" green="0.75686274509999996" blue="0.1529411765" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="130" id="J5Q-jp-syf"/>
+                                </constraints>
+                                <state key="normal" title="Submit Order">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="submitButtonPressed:" destination="iLu-Ew-2cG" eventType="touchUpInside" id="ZNf-pr-dwq"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -131,10 +145,12 @@
                             <constraint firstItem="6RE-en-xdA" firstAttribute="top" secondItem="eAm-TQ-luZ" secondAttribute="bottom" constant="1" id="8E6-21-2PG"/>
                             <constraint firstItem="4FQ-ah-K9z" firstAttribute="leading" secondItem="ZWf-Gl-Col" secondAttribute="trailing" constant="39" id="BXc-4T-msF"/>
                             <constraint firstItem="ZWf-Gl-Col" firstAttribute="leading" secondItem="biy-Av-iN8" secondAttribute="leadingMargin" constant="18" id="Bil-YF-8yP"/>
+                            <constraint firstItem="pi4-Ke-cfQ" firstAttribute="centerX" secondItem="eAm-TQ-luZ" secondAttribute="centerX" id="Dmf-1m-d0l"/>
                             <constraint firstItem="b77-KN-drO" firstAttribute="top" secondItem="vmN-3f-sr3" secondAttribute="bottom" constant="43" id="JCi-sN-DWf"/>
                             <constraint firstItem="b77-KN-drO" firstAttribute="leading" secondItem="biy-Av-iN8" secondAttribute="leadingMargin" constant="18" id="Jdt-4G-XfV"/>
                             <constraint firstItem="ZWf-Gl-Col" firstAttribute="top" secondItem="b77-KN-drO" secondAttribute="bottom" constant="8" symbolic="YES" id="Rrw-6g-Uhe"/>
                             <constraint firstItem="haq-2z-fyi" firstAttribute="baseline" secondItem="b77-KN-drO" secondAttribute="baseline" id="Sbw-vi-fLR"/>
+                            <constraint firstItem="pi4-Ke-cfQ" firstAttribute="top" secondItem="vmN-3f-sr3" secondAttribute="bottom" constant="8" symbolic="YES" id="TaX-mz-Bhx"/>
                             <constraint firstItem="eAm-TQ-luZ" firstAttribute="top" secondItem="Eu5-A1-9bU" secondAttribute="bottom" constant="8" symbolic="YES" id="a8m-6H-gSE"/>
                             <constraint firstItem="Eu5-A1-9bU" firstAttribute="baseline" secondItem="Jcg-gO-VdK" secondAttribute="baseline" id="aTK-Wr-uff"/>
                             <constraint firstItem="haq-2z-fyi" firstAttribute="trailing" secondItem="biy-Av-iN8" secondAttribute="trailingMargin" id="bEL-3o-DgJ"/>
@@ -152,6 +168,7 @@
                         <outlet property="itemsOrdered" destination="Jcg-gO-VdK" id="hxz-I6-L6f"/>
                         <outlet property="orderDate" destination="haq-2z-fyi" id="DkY-U1-EA6"/>
                         <outlet property="orderName" destination="4FQ-ah-K9z" id="wNh-oF-qD5"/>
+                        <outlet property="submitButton" destination="pi4-Ke-cfQ" id="sc7-nC-hAR"/>
                         <outlet property="tableView" destination="eAm-TQ-luZ" id="u3H-Ga-eip"/>
                         <segue destination="kEg-qD-Q1k" kind="presentation" identifier="presentModalNewProduct" id="1Ad-bf-xRH"/>
                     </connections>
