@@ -26,9 +26,13 @@ class NewOrder: BaseViewController{
         
         println("entro : \(order)")
         
+         
         
-        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
         initWidgets()
+
     }
     
     func back(sender: UIBarButtonItem) {
@@ -146,33 +150,24 @@ class NewOrder: BaseViewController{
         
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "CellProducts")
         
-        
-        let cell = tableView.dequeueReusableCellWithIdentifier("CellProducts", forIndexPath: indexPath) as! UITableViewCell
-        
-        // Configure the cell...
+        var cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "CellProducts")
         
         let index = UInt(indexPath.row)
         let prodItem = order?.productsOrdered.objectAtIndex(index) as! ProductOrderedDao
         
         cell.textLabel?.text = prodItem.name
+        cell.detailTextLabel?.text = prodItem.quantity
         
         return cell
-    }
+ 
+        
+     }
     
     
      func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         tableView .deselectRowAtIndexPath(indexPath, animated: true)
-        //
-        //        let index = UInt(indexPath.row)
-        //        let supplierItem = self.suppliers.objectAtIndex(index) as! Supplier
-        //
-        //        self.supplier = self.suppliers.objectAtIndex(index) as! Supplier
-        //
-        //
-        //        println("selecto \(supplierItem)")
-        //
-        //        self.performSegueWithIdentifier("showSupplier", sender: nil)
+
     }
     
 

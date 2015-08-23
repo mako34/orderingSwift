@@ -41,7 +41,7 @@ class Products: UITableViewController {
         }
         actionSheetController.addAction(cancelAction)
         //Create and an option action
-        let nextAction: UIAlertAction = UIAlertAction(title: "Next", style: .Default) { action -> Void in
+        let nextAction: UIAlertAction = UIAlertAction(title: "Save", style: .Default) { action -> Void in
             //Do some other stuff
             println(actionSheetController.textFields?.first)
             
