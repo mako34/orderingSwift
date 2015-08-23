@@ -33,7 +33,7 @@ class NewOrder: BaseViewController{
     override func viewDidAppear(animated: Bool) {
         initWidgets()
 
-    }
+    } 
     
     func back(sender: UIBarButtonItem) {
         
@@ -171,6 +171,29 @@ class NewOrder: BaseViewController{
     }
     
 
+    // Override to support editing the table view.
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            // Delete the row from the data source
+            //tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            
+            //alert n delete!
+            let realm = RLMRealm.defaultRealm() //1
+            
+            let prodItem = order?.productsOrdered.objectAtIndex(UInt(indexPath.row)) as! ProductOrderedDao
+
+//            let objectToDelete = self.suppliers[UInt(indexPath.row)] as! Supplier //2
+            realm.beginWriteTransaction() //3
+            realm.deleteObject(prodItem) //4
+            realm.commitWriteTransaction() //5
+            
+//            self.suppliers = Supplier.allObjects()
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade) //7
+            
+        } else if editingStyle == .Insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        }
+    }
     
     /*
     // Override to support conditional editing of the table view.

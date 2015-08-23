@@ -86,7 +86,7 @@ class MySuppliersVC: UITableViewController {
         let index = UInt(indexPath.row)
         let supplierItem = self.suppliers.objectAtIndex(index) as! Supplier
         
-        self.supplier = self.suppliers.objectAtIndex(index) as! Supplier
+        self.supplier = self.suppliers.objectAtIndex(index) as? Supplier
         
         
         println("selecto \(supplierItem)")

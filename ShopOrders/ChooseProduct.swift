@@ -117,7 +117,7 @@ class ChooseProduct: BaseViewController, UITableViewDelegate, UITableViewDataSou
             
             let productOrderInserto = ProductOrderedDao()
             productOrderInserto.name = self.productItem!.name
-            productOrderInserto.quantity = String(value)
+            productOrderInserto.quantity = String(value+1)
             self.order?.productsOrdered.addObject(productOrderInserto)
             
             realm.addObject(productOrderInserto)

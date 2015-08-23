@@ -81,6 +81,7 @@ class SupplierVC: FormViewController {
         
         var row = FormRowDescriptor(tag: Static.nameTag, rowType: .Name, title: "Name")
   
+        
         if(supplier != nil){
             row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.text" : supplier!.name, "textField.textAlignment" : NSTextAlignment.Right.rawValue]
             section5.addRow(row)
@@ -109,11 +110,19 @@ class SupplierVC: FormViewController {
 
         }
         
+        var productsString = "Products"
         
 //TODO: pon numero de productos!
         
         //products button
-        row = FormRowDescriptor(tag: Static.button, rowType: .Button, title: "Products")
+
+
+        if(supplier != nil){
+            let numberOfroducts:UInt = supplier!.products.count
+            productsString = "\(numberOfroducts) Products"
+        }
+        
+        row = FormRowDescriptor(tag: Static.button, rowType: .Button, title: productsString)
         row.configuration[FormRowDescriptor.Configuration.DidSelectClosure] = {
             self.view.endEditing(true)
 
