@@ -142,18 +142,8 @@ class MySuppliersVC: UITableViewController {
 
         let supplierVC = segue.destinationViewController as? SupplierVC
         
-        println("tu sup \(self.supplier)")
-        
         supplierVC!.supplier = self.supplier
-
-        
-        //        if let supplierVC = segue.destinationViewController as? SupplierVC {
-//            println(self.supplier)
-//            
-//            supplierVC.supplier = self.supplier
-//            
-//        }
-        
+ 
     }
     
     @IBAction func newButtonPressed(sender: AnyObject) {

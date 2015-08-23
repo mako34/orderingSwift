@@ -138,12 +138,8 @@ class Products: UITableViewController {
 
         
         let cell = tableView.dequeueReusableCellWithIdentifier("CellProducts", forIndexPath: indexPath) as! UITableViewCell
-        
-         
 
- 
         // Configure the cell...
-        
         
         let index = UInt(indexPath.row)
         let prodItem = self.products!.objectAtIndex(index) as! ProductsDao
@@ -200,6 +196,4 @@ class Products: UITableViewController {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-
-    
 }

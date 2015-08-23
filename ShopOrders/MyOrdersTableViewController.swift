@@ -12,6 +12,7 @@ import UIKit
 class MyOrdersTableViewController: UITableViewController {
 
     var myOrders : RLMResults!
+    var order : OrderDao?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,11 +29,8 @@ class MyOrdersTableViewController: UITableViewController {
         self.tableView .reloadData()
         println("me entro \(orders)")
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -71,6 +69,16 @@ class MyOrdersTableViewController: UITableViewController {
         return cell
     }
 
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        tableView .deselectRowAtIndexPath(indexPath, animated: true)
+        
+        let index = UInt(indexPath.row)
+        let orderItem = myOrders.objectAtIndex(index) as! OrderDao
+        order = orderItem
+        
+        self.performSegueWithIdentifier("showOrder", sender: nil)
+    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -107,14 +115,19 @@ class MyOrdersTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
+        
+        let orderVC = segue.destinationViewController as? NewOrder
+
+        orderVC?.order = order
+//        supplierVC!.supplier = self.supplier
     }
-    */
+
 
 }
