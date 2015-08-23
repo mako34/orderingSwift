@@ -9,7 +9,7 @@
 import Realm
 import UIKit
 
-class NewOrder: UIViewController{
+class NewOrder: BaseViewController{
 
     var order : OrderDao?
     
@@ -19,20 +19,28 @@ class NewOrder: UIViewController{
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
-
-        self.title = "New Order"
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "+ Product", style: .Plain, target: self, action: "addProduct:")
-    
         println("entro : \(order)")
         
-        //populate
-        orderDate.text = shortDate(order!.date)
-        orderName.text = order?.name
-        itemsOrdered.text = String(stringInterpolationSegment: order!.productsOrdered.count)
-    
-        tableView .reloadData()
-        
+        initWidgets()
     } 
+    
+    func initWidgets(){
+        self.title = "New Order"
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "+ Product", style: .Plain, target: self, action: "addProduct:")
+        
+        if(order == nil){
+            orderDate.text = shortDate(NSDate())
+            orderName.placeholder = "Enter name"
+            itemsOrdered.text = "Enter products"
+            
+        }else{
+            orderDate.text = shortDate(order!.date)
+            orderName.text = order?.name
+            itemsOrdered.text = String(stringInterpolationSegment: order!.productsOrdered.count)
+            
+            tableView .reloadData()
+        }
+    }
     
     func shortDate(date:NSDate) -> String {
         let dateFormatter = NSDateFormatter()
@@ -48,28 +56,34 @@ class NewOrder: UIViewController{
             
         }else {
             
+            //check if exist if not create new,
+            let predicate = NSPredicate(format: "name BEGINSWITH [c] %@", orderName.text)
+            let orderResults = OrderDao.objectsWithPredicate(predicate)
             let realm = RLMRealm.defaultRealm()
             
-            let orderInserto = OrderDao()
-            orderInserto.name = orderName.text
-            order = orderInserto
-            realm.transactionWithBlock(){
-                realm.addObject(orderInserto)
+            if(orderResults.count == 0){
+                
+                let orderInserto = OrderDao()
+                orderInserto.name = orderName.text
+                order = orderInserto
+                realm.transactionWithBlock(){
+                    realm.addObject(orderInserto)
+                }
+            }else{
+                let orderObj : OrderDao = orderResults.firstObject() as! OrderDao
+                realm.beginWriteTransaction() //begin
+                orderObj.name = orderName.text //set
+                order = orderObj
+                realm.commitWriteTransaction() //save
+
             }
-            
+ 
             self.performSegueWithIdentifier("presentModalNewProduct", sender: nil)
 
         }
 
         
     }
-    
-    func showAlert(title:String, message:String){
-        var altMessage = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
-        altMessage.addAction(UIAlertAction(title: "Done", style: UIAlertActionStyle.Default, handler: nil))
-        self.presentViewController(altMessage, animated: true, completion: nil)
-    }
-    
     
     //table stuff
     // MARK: - Table view data source
@@ -83,12 +97,25 @@ class NewOrder: UIViewController{
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return Int(order!.productsOrdered.count)
+        if(order != nil)
+        {
+            return Int(order!.productsOrdered.count)
+        }
+        return 0
     }
 
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let footerView = UIView(frame: CGRectMake(0, 0, tableView.frame.size.width, 40))
         footerView.backgroundColor = UIColor.lightGrayColor()
+        
+        let lava = UILabel(frame: CGRectMake(10, 2, 200, 15))
+        lava.text = "Products"
+        
+        
+        lava.font = UIFont(name: lava.font.fontName, size: 11)
+
+        
+        footerView .addSubview(lava)
         
         return footerView
     }

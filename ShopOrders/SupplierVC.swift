@@ -11,7 +11,6 @@ import Realm
 import SwiftForms
 import UIKit
 
-//import MagicalRecord
 
 extension String {
     var length: Int { return count(self)         }  // Swift 1.2
@@ -128,7 +127,7 @@ class SupplierVC: FormViewController {
                     let predicate = NSPredicate(format: "name BEGINSWITH [c]%@", name!)
                     let saba = Supplier.objectsWithPredicate(predicate)
                     let realm = RLMRealm.defaultRealm()
-                    
+                     
                     if(saba.count == 0){
                         let supplierInserto = Supplier()
                         supplierInserto.name = name!

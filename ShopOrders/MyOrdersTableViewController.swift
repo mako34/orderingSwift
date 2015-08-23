@@ -16,7 +16,11 @@ class MyOrdersTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+  
+        initWidgets()
+    }
+ 
+    func initWidgets(){
         //give me the orders son
         var orders : RLMResults{
             get {
@@ -25,14 +29,11 @@ class MyOrdersTableViewController: UITableViewController {
         }
         
         myOrders =  orders
+        println("me entro \(orders)")
         
         self.tableView .reloadData()
-        println("me entro \(orders)")
-
-        
-        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

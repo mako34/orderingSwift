@@ -12,7 +12,7 @@ import Realm
 import UIKit
 
 //, UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate, UISearchBarDelegate
-class ChooseProduct: UIViewController, UITableViewDelegate, UITableViewDataSource
+class ChooseProduct: BaseViewController, UITableViewDelegate, UITableViewDataSource
 {
     
     var Products : RLMResults!
@@ -40,6 +40,15 @@ class ChooseProduct: UIViewController, UITableViewDelegate, UITableViewDataSourc
         
         println("me entro \(order)")
         
+
+        
+    }
+    
+    override func viewDidLayoutSubviews() {
+        if(Products.count == 0){
+            
+            showAlert("MyOrders", message: "Please create suppliers and products")
+        }
     }
  
     // MARK: - Table view data source

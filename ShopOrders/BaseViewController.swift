@@ -16,12 +16,23 @@ class BaseViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    
+    
+    func showAlert(title:String, message:String){
+        var altMessage = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        altMessage.addAction(UIAlertAction(title: "Done", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(altMessage, animated: true, completion: nil)
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
 
+    
+    
     /*
     // MARK: - Navigation
 
