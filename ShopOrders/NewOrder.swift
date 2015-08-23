@@ -19,10 +19,27 @@ class NewOrder: BaseViewController{
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        self.navigationItem.hidesBackButton = true
+        let newBackButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.Plain, target: self, action: "back:")
+        self.navigationItem.leftBarButtonItem = newBackButton;
+        
         println("entro : \(order)")
         
+        
+        
         initWidgets()
-    } 
+    }
+    
+    func back(sender: UIBarButtonItem) {
+        
+        println("backeado")
+        // Perform your custom actions
+        // ...
+        // Go back to the previous ViewController
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+ 
     
     func initWidgets(){
         self.title = "New Order"

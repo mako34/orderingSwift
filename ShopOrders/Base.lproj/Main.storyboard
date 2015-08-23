@@ -29,12 +29,13 @@
                     <navigationItem key="navigationItem" title="MyOrders" id="ZhE-ts-Ylr">
                         <barButtonItem key="rightBarButtonItem" title="New" id="f2I-9b-0u7">
                             <connections>
-                                <segue destination="iLu-Ew-2cG" kind="show" identifier="showOrder" id="8pC-7x-EHI"/>
+                                <action selector="newOrderButtonPressed:" destination="rap-vs-dER" id="1p5-4f-x1c"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="5ja-5k-H7w" id="dXW-iR-9cg"/>
+                        <segue destination="iLu-Ew-2cG" kind="show" identifier="showOrder" id="QGK-4l-HQa"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fxd-z3-Zez" userLabel="First Responder" sceneMemberID="firstResponder"/>

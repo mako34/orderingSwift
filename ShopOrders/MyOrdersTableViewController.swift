@@ -17,7 +17,13 @@ class MyOrdersTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
   
+//        initWidgets()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(true)
         initWidgets()
+
     }
  
     func initWidgets(){
@@ -39,8 +45,15 @@ class MyOrdersTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    // MARK: - Table view data source
+    
+    @IBAction func newOrderButtonPressed(sender: AnyObject) {
+        order = nil
+        self.performSegueWithIdentifier("showOrder", sender: nil)
 
+    }
+    
+    // MARK: - Table view data source
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
@@ -50,6 +63,9 @@ class MyOrdersTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
+        if(myOrders == nil){
+            return 0
+        }
         return Int(myOrders.count)
     }
 
