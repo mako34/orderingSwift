@@ -1,4 +1,14 @@
 
 
+. send product email to supplier
+
+. send SMS
+
+. delete cascade
+
+. edit supplier
+. edit product
+
 . do search on products
 https://www.veasoftware.com/tutorials/2015/4/13/search-display-controller-in-swift-xcode-62-ios-82-tutorial
+

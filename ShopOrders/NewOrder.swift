@@ -211,7 +211,14 @@ class NewOrder: BaseViewController{
     
     
     @IBAction func submitButtonPressed(sender: AnyObject) {
-        println("lane")
+        
+        if(order?.productsOrdered.count > 0){
+            println("lane")
+
+            //services!
+            
+        }
+        
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
