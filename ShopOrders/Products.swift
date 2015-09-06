@@ -60,6 +60,7 @@ class Products: UITableViewController {
             
             let productInserto = ProductsDao()
             productInserto.name = textField0!.text
+            productInserto.supplier = self.supplier!
             
             if((textField1!.text) != nil){
                 productInserto.ref = textField1!.text

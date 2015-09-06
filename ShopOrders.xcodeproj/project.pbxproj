@@ -10,7 +10,6 @@
 		B513E0AD1B84A1C400E9CC72 /* OrderDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = B513E0AC1B84A1C400E9CC72 /* OrderDao.swift */; };
 		B513E0AF1B84A24800E9CC72 /* ProductOrderedDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = B513E0AE1B84A24800E9CC72 /* ProductOrderedDao.swift */; };
 		B513E0B11B84B0F800E9CC72 /* ChooseProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = B513E0B01B84B0F800E9CC72 /* ChooseProduct.swift */; };
-		B513E0B31B84B78400E9CC72 /* FriendItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B513E0B21B84B78400E9CC72 /* FriendItem.swift */; };
 		B513E0B51B84BE8600E9CC72 /* TODO.txt in Resources */ = {isa = PBXBuildFile; fileRef = B513E0B41B84BE8600E9CC72 /* TODO.txt */; };
 		B52FEAA91B7E1561002795AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52FEAA81B7E1561002795AF /* AppDelegate.swift */; };
 		B52FEAB01B7E1561002795AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B52FEAAE1B7E1561002795AF /* Main.storyboard */; };
@@ -26,6 +25,8 @@
 		B5DC48F51B806D670090D826 /* SupplierVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DC48F41B806D670090D826 /* SupplierVC.swift */; };
 		B5DC48F91B8095580090D826 /* Supplier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DC48F81B8095580090D826 /* Supplier.swift */; };
 		B5DC48FD1B80A0540090D826 /* MySuppliersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DC48FC1B80A0540090D826 /* MySuppliersVC.swift */; };
+		B5E1E01E1B9797B500BC329F /* AccountDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E1E01D1B9797B500BC329F /* AccountDAO.swift */; };
+		B5E1E0201B99112700BC329F /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E1E01F1B99112700BC329F /* AccountViewController.swift */; };
 		F00030C953ECC6D356D56ECF /* Pods_ShopOrders.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBA158B2BE8D3C1547AD57DC /* Pods_ShopOrders.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -44,7 +45,6 @@
 		B513E0AC1B84A1C400E9CC72 /* OrderDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderDao.swift; sourceTree = "<group>"; };
 		B513E0AE1B84A24800E9CC72 /* ProductOrderedDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductOrderedDao.swift; sourceTree = "<group>"; };
 		B513E0B01B84B0F800E9CC72 /* ChooseProduct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseProduct.swift; sourceTree = "<group>"; };
-		B513E0B21B84B78400E9CC72 /* FriendItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendItem.swift; sourceTree = "<group>"; };
 		B513E0B41B84BE8600E9CC72 /* TODO.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO.txt; sourceTree = "<group>"; };
 		B52FEAA31B7E1561002795AF /* ShopOrders.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShopOrders.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B52FEAA71B7E1561002795AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -64,6 +64,8 @@
 		B5DC48F41B806D670090D826 /* SupplierVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupplierVC.swift; sourceTree = "<group>"; };
 		B5DC48F81B8095580090D826 /* Supplier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Supplier.swift; sourceTree = "<group>"; };
 		B5DC48FC1B80A0540090D826 /* MySuppliersVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySuppliersVC.swift; sourceTree = "<group>"; };
+		B5E1E01D1B9797B500BC329F /* AccountDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountDAO.swift; sourceTree = "<group>"; };
+		B5E1E01F1B99112700BC329F /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		BA789F78907914E540B44965 /* Pods-ShopOrders.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShopOrders.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShopOrders/Pods-ShopOrders.debug.xcconfig"; sourceTree = "<group>"; };
 		BBA158B2BE8D3C1547AD57DC /* Pods_ShopOrders.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShopOrders.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -129,6 +131,7 @@
 			children = (
 				B52FEAA81B7E1561002795AF /* AppDelegate.swift */,
 				B55121CB1B89590400B50B1D /* BaseViewController.swift */,
+				B5E1E01F1B99112700BC329F /* AccountViewController.swift */,
 				B575AD2E1B8606A5001F2EEF /* MyOrdersTableViewController.swift */,
 				B5D213151B7E414A00CDDC31 /* NewOrder.swift */,
 				B513E0B01B84B0F800E9CC72 /* ChooseProduct.swift */,
@@ -175,10 +178,10 @@
 			children = (
 				B5AE5A031B835D7700A2B25E /* RLMSupport.swift */,
 				B5DC48F81B8095580090D826 /* Supplier.swift */,
+				B5E1E01D1B9797B500BC329F /* AccountDAO.swift */,
 				B5AE5A011B82198D00A2B25E /* ProductsDAO.swift */,
 				B513E0AC1B84A1C400E9CC72 /* OrderDao.swift */,
 				B513E0AE1B84A24800E9CC72 /* ProductOrderedDao.swift */,
-				B513E0B21B84B78400E9CC72 /* FriendItem.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -337,15 +340,16 @@
 			files = (
 				B5DC48F51B806D670090D826 /* SupplierVC.swift in Sources */,
 				B52FEAA91B7E1561002795AF /* AppDelegate.swift in Sources */,
-				B513E0B31B84B78400E9CC72 /* FriendItem.swift in Sources */,
 				B5AE5A021B82198D00A2B25E /* ProductsDAO.swift in Sources */,
 				B575AD2F1B8606A5001F2EEF /* MyOrdersTableViewController.swift in Sources */,
 				B55121CC1B89590400B50B1D /* BaseViewController.swift in Sources */,
 				B513E0AD1B84A1C400E9CC72 /* OrderDao.swift in Sources */,
 				B5DC48E81B8052470090D826 /* Products.swift in Sources */,
 				B5DC48F91B8095580090D826 /* Supplier.swift in Sources */,
+				B5E1E01E1B9797B500BC329F /* AccountDAO.swift in Sources */,
 				B5AE5A041B835D7700A2B25E /* RLMSupport.swift in Sources */,
 				B513E0B11B84B0F800E9CC72 /* ChooseProduct.swift in Sources */,
+				B5E1E0201B99112700BC329F /* AccountViewController.swift in Sources */,
 				B513E0AF1B84A24800E9CC72 /* ProductOrderedDao.swift in Sources */,
 				B5D213161B7E414A00CDDC31 /* NewOrder.swift in Sources */,
 				B5DC48FD1B80A0540090D826 /* MySuppliersVC.swift in Sources */,

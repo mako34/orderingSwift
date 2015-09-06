@@ -19,6 +19,9 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0fy-d4-f99" id="MR8-gY-qRC">
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="KRL-xt-ncF" kind="presentation" identifier="showAccountModal" id="NrO-GY-lV4"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -27,6 +30,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="MyOrders" id="ZhE-ts-Ylr">
+                        <barButtonItem key="leftBarButtonItem" image="cog" id="ojV-KA-xWX">
+                            <connections>
+                                <action selector="settingsButtonPressed:" destination="rap-vs-dER" id="TKl-2U-hn2"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="New" id="f2I-9b-0u7">
                             <connections>
                                 <action selector="newOrderButtonPressed:" destination="rap-vs-dER" id="1p5-4f-x1c"/>
@@ -406,8 +414,28 @@
             </objects>
             <point key="canvasLocation" x="-4" y="20"/>
         </scene>
+        <!--Account View Controller-->
+        <scene sceneID="UPM-8K-e5F">
+            <objects>
+                <viewController id="KRL-xt-ncF" customClass="AccountViewController" customModule="ShopOrders" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="cQ9-8z-o92">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <connections>
+                            <outlet property="dataSource" destination="KRL-xt-ncF" id="Qu6-vj-fpb"/>
+                            <outlet property="delegate" destination="KRL-xt-ncF" id="pYE-dB-kSe"/>
+                        </connections>
+                    </tableView>
+                    <nil key="simulatedTopBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9z2-Ba-aXh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1630" y="-840"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="cog" width="32" height="32"/>
         <image name="lists" width="32" height="32"/>
         <image name="supplies" width="32" height="32"/>
     </resources>

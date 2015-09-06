@@ -18,6 +18,9 @@ class MyOrdersTableViewController: UITableViewController {
         super.viewDidLoad()
   
 //        initWidgets()
+        
+        
+//        self.performSegueWithIdentifier("showAccountModal", sender: nil)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -144,6 +147,13 @@ class MyOrdersTableViewController: UITableViewController {
 
         orderVC?.order = order
 //        supplierVC!.supplier = self.supplier
+    }
+    
+    
+    @IBAction func settingsButtonPressed(sender: AnyObject) {
+     
+        self.performSegueWithIdentifier("showAccountModal", sender: nil)
+
     }
 
 

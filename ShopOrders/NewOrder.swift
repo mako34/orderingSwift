@@ -6,12 +6,19 @@
 //  Copyright (c) 2015 Hyper. All rights reserved.
 //
 
+import Alamofire
 import Realm
 import UIKit
+import MBProgressHUD
+import SwiftyJSON
 
 class NewOrder: BaseViewController{
 
     var order : OrderDao?
+    var hud: MBProgressHUD = MBProgressHUD()
+    var productNames = [String]()
+    var productsSeparated = [Dictionary<String, Any>?]()
+    var indexPost : Int?
     
     @IBOutlet weak var orderDate: UILabel!
     @IBOutlet weak var orderName: UITextField!
@@ -19,17 +26,15 @@ class NewOrder: BaseViewController{
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var submitButton: UIButton!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        indexPost = 0
         self.navigationItem.hidesBackButton = true
         let newBackButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.Plain, target: self, action: "back:")
         self.navigationItem.leftBarButtonItem = newBackButton;
         
         println("entro : \(order)")
-        
-         
-        
+   
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -37,12 +42,14 @@ class NewOrder: BaseViewController{
 
     } 
     
+    override func viewDidLayoutSubviews() {
+        initWidgets()
+
+    }
+    
     func back(sender: UIBarButtonItem) {
         
         println("backeado")
-        // Perform your custom actions
-        // ...
-        // Go back to the previous ViewController
         self.navigationController?.popViewControllerAnimated(true)
     }
  
@@ -66,6 +73,11 @@ class NewOrder: BaseViewController{
             }
             
             tableView .reloadData()
+            
+            
+            if(order?.submitted == true){
+                disableSubmitButton()
+            }
         }
     }
     
@@ -109,7 +121,6 @@ class NewOrder: BaseViewController{
 
         }
 
-        
     }
     
     //table stuff
@@ -209,16 +220,252 @@ class NewOrder: BaseViewController{
     }
     */
     
-    
+
     @IBAction func submitButtonPressed(sender: AnyObject) {
         
-        if(order?.productsOrdered.count > 0){
-            println("lane")
+       separateOrderProductsBySupplier()
 
-            //services!
+
+    }
+    
+    func separateOrderProductsBySupplier(){
+        
+        //brute force algol!
+        if(order?.productsOrdered.count > 0){
+            //            println("array :: \(order?.productsOrdered)")
+            
+            productNames.removeAll(keepCapacity: false)
+            
+            for product in order!.productsOrdered as RLMArray  {
+                
+                var prod :(ProductOrderedDao) = product as! ProductOrderedDao
+                //dime el producto ,
+                let predicate = NSPredicate(format: "name BEGINSWITH [c] %@", prod.name)
+                let productOriginalArraya = ProductsDao.objectsWithPredicate(predicate)
+                let prodOriginal = productOriginalArraya.firstObject() as! ProductsDao
+                
+                productNames.append(prodOriginal.supplier.name)
+                
+                
+            }
+            
+            let unique = Array(Set(productNames))
+            var productArraya = [NSDictionary]()
+            
+            for supplierName in unique {
+                var prodDicto = Dictionary<String, Any>()
+                var orderConstructedArraya = [Any]()
+                
+                prodDicto["supplier"] = supplierName
+                
+                //find supplier! horrible but fix soon
+                let predicate = NSPredicate(format: "name BEGINSWITH [c] %@", supplierName)
+                let supplierArraya = Supplier.objectsWithPredicate(predicate)
+                let sup = supplierArraya.firstObject() as! Supplier
+                prodDicto["supplierEmail"] = sup.email
+
+                
+                for product in order!.productsOrdered as RLMArray  {
+                    
+                    var prod :(ProductOrderedDao) = product as! ProductOrderedDao
+                    let predicate = NSPredicate(format: "name BEGINSWITH [c] %@", prod.name)
+                    let productOriginalArraya = ProductsDao.objectsWithPredicate(predicate)
+                    let prodOriginal = productOriginalArraya.firstObject() as! ProductsDao
+                    
+
+                    if (supplierName == prodOriginal.supplier.name){
+                        var prodItemDicto = [String : String]()
+                        prodItemDicto["productName"] = prod.name
+                        prodItemDicto["productQuantity"] = prod.quantity
+                        orderConstructedArraya.append(prodItemDicto)
+                    }
+                    
+                }
+                prodDicto["products"] = orderConstructedArraya
+                productsSeparated .append(prodDicto)
+                
+            }
+            
+            
+            println("t; \(productsSeparated)")
+            
+            
+            postOrder()
+        }
+    }
+    
+    func postOrder(){
+
+        //separate by suppliers! donsky
+        //send one by one,
+        
+        
+        
+        let indexPlus:Int = indexPost! + 1
+        
+        if (indexPlus <= productsSeparated.count){
+            
+            if let dictin = productsSeparated[indexPost!] {
+                
+                println("va el index \(indexPost)")
+                postOrderService(dictin)
+                
+            }
             
         }
         
+
+        
+  
+    }
+    
+    
+    func postOrderService(dictin : Dictionary<String, Any>){
+        
+        println("tdictin; \(dictin)")
+
+        
+        let header_distributor = dictin["supplier"] as! String
+        let supplier_email = dictin["supplierEmail"] as! String
+        
+        //format date
+        var dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "dd-MM-YYYY hh:mm" //format style. Browse online to get a format that fits your needs.
+        var dateString = dateFormatter.stringFromDate(order!.date)
+        
+        let shop_name = "my supa shopa"
+        
+        //arma productos arraya
+        let productsArray = dictin["products"]
+        
+        var productsString:String = " \(productsArray!)"
+        
+//        for prodDicto in productsArray{
+//            let productName = prodDicto["productName"]
+//            let productQuantity = prodDicto["productQuantity"]
+//        }
+        
+        let parameters = [
+            "key": "S0ksg6WvhNXZbLKw8_ueGw",
+            "template_name": "orderingtemplate",
+            "template_content": [
+                [
+                    "name": "header_distributor",
+                    "content": header_distributor
+                    ] as [String : String]!,
+                [
+                    "name": "date",
+                    "content": dateString
+                    ] as [String : String]!,
+                [
+                    "name": "shop_name",
+                    "content": shop_name
+                    ] as [String : String]!,
+                [
+                    "name": "products",
+                    "content": productsString
+                    ] as [String : String]!
+            ],
+            "message": [
+                "text": "Example text 222content",
+                "subject": "You have an order",
+                "from_email": "manuel.betancurt@codesource.com.au",
+                "from_name": "Example Name",
+                "to": [
+                    [
+                        "email": supplier_email,
+                        "name": header_distributor,
+                        "type": "to"
+                    ]
+                ],
+                "headers": [
+                    "Reply-To": "troppo@gizmomen.com"
+                ],
+                "important": false,
+                "bcc_address": "message.bcc_address@example.com",
+                "merge": true,
+                "merge_language": "mailchimp",
+                "global_merge_vars": [
+                    [
+                        "name": "merge1",
+                        "content": "merge1 content"
+                    ]
+                ],
+                "merge_vars": [
+                    [
+                        "rcpt": "recipient.email@example.com",
+                        "vars": [
+                            [
+                                "name": "merge2",
+                                "content": "merge2 content"
+                            ]
+                        ]
+                    ]
+                ],
+                "tags": [
+                    "password-resets"
+                ],
+                "recipient_metadata": [
+                    [
+                        "rcpt": "recipient.email@example.com",
+                        "values": [
+                            "user_id": 123456
+                        ]
+                    ]
+                ]
+            ],
+            "async": false,
+            "ip_pool": "Main Pool"
+            
+        ]
+
+        hud .show(true)
+
+        
+        Alamofire.request(.POST, "https://mandrillapp.com/api/1.0/messages/send-template.json", parameters: parameters as? [String : AnyObject], encoding: .JSON)
+            .responseJSON { (request, response, data, error) in
+                
+                println("response :: \(response)")
+                
+                if let anError = error
+                {
+                    // got an error in getting the data, need to handle it
+                    println("error calling POST on /posts")
+                    println(error)
+                    
+                    self.hud .hide(true)
+                }
+                else if let data: AnyObject = data
+                {
+                    self.hud .hide(true)
+
+                    // handle the results as JSON, without a bunch of nested if loops
+                    let post = JSON(data)
+                    // to make sure it posted, print the results
+                    //                    println("The post is: " + post.description)
+                    println("post :: \(post)")
+                    
+                    let realm = RLMRealm.defaultRealm()
+                    realm.beginWriteTransaction() //begin
+
+                    self.order?.submitted = true
+                    
+                    realm.commitWriteTransaction() //save
+
+                    
+                    self.disableSubmitButton()
+                    
+                    self.indexPost!+=1
+                    self.postOrder()
+                }
+        }
+    }
+    
+    
+    func disableSubmitButton(){
+        self.submitButton.titleLabel?.text = "Submitted"
+        self.submitButton.backgroundColor = UIColor.blueColor()
+        self.submitButton.enabled = false
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

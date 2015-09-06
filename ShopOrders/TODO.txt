@@ -1,5 +1,6 @@
 
 
+. set afNetworking
 . send product email to supplier
 
 . send SMS
@@ -12,3 +13,22 @@
 . do search on products
 https://www.veasoftware.com/tutorials/2015/4/13/search-display-controller-in-swift-xcode-62-ios-82-tutorial
 
+
+
+//
+
+[3/09/2015 07:12:13] George Kolistasi: name of shop,x
+[3/09/2015 07:12:14] George Kolistasi: address,x
+[3/09/2015 07:12:22] George Kolistasi: contact phone,x  / email,x
+[3/09/2015 07:12:31] George Kolistasi: name of contact,x
+
+
+[3/09/2015 07:12:41] George Kolistasi: delivery instructions
+
+
+[3/09/2015 07:12:51] George Kolistasi: opening hours
+[3/09/2015 07:13:02] George Kolistasi: ABN
+[3/09/2015 07:13:23] George Kolistasi: In address should be physical & postal
+
+[3/09/2015 07:15:13] George Kolistasi: cut off day is for supplier not customer
+[3/09/2015 07:15:35] George Kolistasi: and ordering method (email/SMS/Fax)

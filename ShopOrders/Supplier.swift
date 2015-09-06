@@ -17,4 +17,4 @@ class Supplier: RLMObject {
     
     dynamic var products = RLMArray(objectClassName: ProductsDao.className())
     
-}
+} 

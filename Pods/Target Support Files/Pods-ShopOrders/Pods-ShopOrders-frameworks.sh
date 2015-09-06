@@ -53,13 +53,19 @@ code_sign_if_enabled() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework 'Pods-ShopOrders/ActionSheetPicker_3_0.framework'
+  install_framework 'Pods-ShopOrders/Alamofire.framework'
+  install_framework 'Pods-ShopOrders/MBProgressHUD.framework'
   install_framework 'Pods-ShopOrders/Realm.framework'
   install_framework 'Pods-ShopOrders/RealmSwift.framework'
   install_framework 'Pods-ShopOrders/SwiftForms.framework'
+  install_framework 'Pods-ShopOrders/SwiftyJSON.framework'
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework 'Pods-ShopOrders/ActionSheetPicker_3_0.framework'
+  install_framework 'Pods-ShopOrders/Alamofire.framework'
+  install_framework 'Pods-ShopOrders/MBProgressHUD.framework'
   install_framework 'Pods-ShopOrders/Realm.framework'
   install_framework 'Pods-ShopOrders/RealmSwift.framework'
   install_framework 'Pods-ShopOrders/SwiftForms.framework'
+  install_framework 'Pods-ShopOrders/SwiftyJSON.framework'
 fi

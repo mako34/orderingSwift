@@ -9,10 +9,13 @@ use_frameworks!
 
 
 target 'ShopOrders' do
-pod 'SwiftForms'
-pod 'RealmSwift'
-
-pod 'ActionSheetPicker-3.0'
+    
+    pod 'SwiftForms'
+    pod 'RealmSwift'
+    pod 'Alamofire', '~> 1.3'
+    pod 'ActionSheetPicker-3.0'
+    pod 'MBProgressHUD', '~> 0.9.1'
+    pod 'SwiftyJSON', '~> 2.2.1'
 
 end
 
