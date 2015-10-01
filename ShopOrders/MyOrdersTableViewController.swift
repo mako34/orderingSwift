@@ -20,7 +20,6 @@ class MyOrdersTableViewController: UITableViewController {
 //        initWidgets()
         
         
-//        self.performSegueWithIdentifier("showAccountModal", sender: nil)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -41,6 +40,20 @@ class MyOrdersTableViewController: UITableViewController {
         println("me entro \(orders)")
         
         self.tableView .reloadData()
+        
+        let accounts = AccountDAO.allObjects()
+        if let account:AccountDAO = accounts.firstObject() as? AccountDAO{
+            println("saba")
+            
+        }else{
+            self.performSegueWithIdentifier("showAccountModal", sender: nil)
+            
+        }
+        
+        
+        
+
+ 
     }
     
     override func didReceiveMemoryWarning() {
@@ -138,14 +151,16 @@ class MyOrdersTableViewController: UITableViewController {
     
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+ 
+        if(segue.identifier == "showOrder"){
+            let orderVC = segue.destinationViewController as? NewOrder
+            orderVC?.order = order
+        }else if(segue.identifier == "showAccountModal"){
+            
+        }
         
-        let orderVC = segue.destinationViewController as? NewOrder
 
-        orderVC?.order = order
 //        supplierVC!.supplier = self.supplier
     }
     

@@ -6,14 +6,18 @@
 //  Copyright (c) 2015 Hyper. All rights reserved.
 //
 
+import Realm
 import SwiftForms
 import UIKit
 
 class AccountViewController: FormViewController {
 
     struct Static {
-        static let nameTag = "name"
+        static let shopNameTag = "shopName"
+        static let shopAddressTag = "shopAddress"
+        static let contactNameTag = "contactName"
         static let emailTag = "email"
+        static let abnTag = "abn"
         static let URLTag = "url"
         static let phoneTag = "phone"
         static let openingTime = "openingTime"
@@ -56,17 +60,19 @@ class AccountViewController: FormViewController {
         
         form.title = "Example Form"
         
-        let section1 = FormSectionDescriptor()
         
-        
-        section1.headerTitle = "Account Details"
 
-        var row: FormRowDescriptor! = FormRowDescriptor(tag: Static.nameTag, rowType: .Name, title: "Shop Name")
-        row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.placeholder" : "my Awesome shop", "textField.textAlignment" : NSTextAlignment.Right.rawValue]
+
+        var row: FormRowDescriptor! = FormRowDescriptor(tag: Static.shopNameTag, rowType: .Name, title: "Shop Name")
+        
+        let section1 = FormSectionDescriptor()
+        section1.headerTitle = "Account Details"
+        
+        row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.placeholder" : "e.g. My Awesome shop", "textField.textAlignment" : NSTextAlignment.Right.rawValue]
         section1.addRow(row)
         
-        row = FormRowDescriptor(tag: Static.nameTag, rowType: .Name, title: "Address")
-        row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.placeholder" : "my Awesome shop", "textField.textAlignment" : NSTextAlignment.Right.rawValue]
+        row = FormRowDescriptor(tag: Static.shopAddressTag, rowType: .Name, title: "Address")
+        row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.placeholder" : "e.g. 43 Main st", "textField.textAlignment" : NSTextAlignment.Right.rawValue]
         section1.addRow(row)
         
         row = FormRowDescriptor(tag: Static.phoneTag, rowType: .Phone, title: "Phone")
@@ -77,12 +83,12 @@ class AccountViewController: FormViewController {
         row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.placeholder" : "awesome@myshop.com", "textField.textAlignment" : NSTextAlignment.Right.rawValue]
         section1.addRow(row)
         
-        row = FormRowDescriptor(tag: Static.nameTag, rowType: .Name, title: "Contact name")
+        row = FormRowDescriptor(tag: Static.contactNameTag, rowType: .Name, title: "Contact name")
         row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.placeholder" : "person in charge", "textField.textAlignment" : NSTextAlignment.Right.rawValue]
         section1.addRow(row)
         
         
-        row = FormRowDescriptor(tag: Static.phoneTag, rowType: .Phone, title: "ABN")
+        row = FormRowDescriptor(tag: Static.abnTag, rowType: .Phone, title: "ABN")
         row.configuration[FormRowDescriptor.Configuration.CellConfiguration] = ["textField.placeholder" : "ABN #", "textField.textAlignment" : NSTextAlignment.Right.rawValue]
         section1.addRow(row)
         
@@ -111,8 +117,7 @@ class AccountViewController: FormViewController {
         
         row = FormRowDescriptor(tag: Static.button, rowType: .Button, title: "Save")
         row.configuration[FormRowDescriptor.Configuration.DidSelectClosure] = {
-            self.view.endEditing(true)
-            self .dismissViewControllerAnimated(true, completion: nil)
+            self.saveButtonPressed()
             
             } as DidSelectClosure
         section8.addRow(row)
@@ -124,8 +129,82 @@ class AccountViewController: FormViewController {
         self.form = form
     }
     
+    func saveButtonPressed(){
+        //validate
+
+
+        if (formIsValid()){
+            
+            
+            
+            //save entity account
+            let realm = RLMRealm.defaultRealm()
+            let accountInserto = AccountDAO()
+            
+            if let shusa:String = self.form.formValues() ["shopName"] as? String{
+                accountInserto.shopName = shusa
+            }
+            if let shusa:String = self.form.formValues() ["shopAddress"] as? String{
+                accountInserto.address = shusa
+            }
+            if let shusa:String = self.form.formValues() ["phone"] as? String{
+                accountInserto.phone = shusa
+            }
+            if let shusa:String = self.form.formValues() ["email"] as? String{
+                accountInserto.email = shusa
+            }
+            if let shusa:String = self.form.formValues() ["contactName"] as? String{
+                accountInserto.contactName = shusa
+            }
+            if let shusa:String = self.form.formValues() ["abn"] as? String{
+                accountInserto.abn = shusa
+            }
+            if let shusa:String = self.form.formValues() ["abn"] as? String{
+                accountInserto.url = shusa
+            }
+            if let shusa:String = self.form.formValues() ["openingTime"] as? String{
+                accountInserto.openingTime = shusa
+            }
+            if let shusa:String = self.form.formValues() ["closingTime"] as? String{
+                accountInserto.closingTime = shusa
+            }
+        }
+        
+//        self.view.endEditing(true)
+//        self .dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func formIsValid()->Bool{
+//        let message = self.form.formValues().description
+        if(!analizeFormField("shopName", value: "shop")){
+            return false
+        }
+        if(!analizeFormField("email", value: "email")){
+            return false
+        }
+        return true
+    }
+    
+    func analizeFormField(key:String, value:String)->Bool{
+//        println("se :: \(form.formValues().description)")
+        if let shopa: String = self.form.formValues() [key] as? String{
+            //fprintln("nombre :: \(shopa)")
+            
+        }else{
+            showAlert("MyOrders", message: "Please enter \(value) Name")
+            return false
+        }
+        
+        return true;
+    }
+    
+    func showAlert(title:String, message:String){
+        var altMessage = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        altMessage.addAction(UIAlertAction(title: "Done", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(altMessage, animated: true, completion: nil)
+    }
+    
     override func scrollViewWillBeginDragging(scrollView: UIScrollView) {
         self.view.endEditing(true)
-
-        
-    }}
+    }
+}

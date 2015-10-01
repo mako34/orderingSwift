@@ -14,7 +14,8 @@ class Supplier: RLMObject {
     dynamic var name = ""
     dynamic var email = ""
     dynamic var phone = ""
-    
+    dynamic var cutOffDay = ""
+
     dynamic var products = RLMArray(objectClassName: ProductsDao.className())
     
 } 

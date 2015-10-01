@@ -9,7 +9,17 @@
 import Realm
 
 class AccountDAO: RLMObject {
-   dynamic var name = ""
-   dynamic var email = ""
-   dynamic var contactName = ""
+
+    dynamic var shopName = ""
+    dynamic var address = ""
+    dynamic var phone = ""
+    dynamic var email = ""
+    dynamic var contactName = ""
+    dynamic var abn = ""
+    dynamic var url = ""
+    dynamic var openingTime = ""
+    dynamic var closingTime = ""
+    dynamic var instructions = ""
+
+    
 }

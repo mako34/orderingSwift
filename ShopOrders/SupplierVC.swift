@@ -22,22 +22,12 @@ class SupplierVC: FormViewController {
     
     struct Static {
         static let nameTag = "name"
-        static let passwordTag = "password"
-        static let lastNameTag = "lastName"
-        static let jobTag = "job"
         static let emailTag = "email"
         static let URLTag = "url"
         static let phoneTag = "phone"
-        static let enabled = "enabled"
-        static let check = "check"
         static let segmented = "segmented"
         static let picker = "picker"
-        static let birthday = "birthday"
-        static let categories = "categories"
         static let button = "button"
-        static let stepper = "stepper"
-        static let slider = "slider"
-        static let textView = "textview"
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -110,9 +100,38 @@ class SupplierVC: FormViewController {
 
         }
         
-        var productsString = "Products"
         
-//TODO: pon numero de productos!
+        //
+        
+        row = FormRowDescriptor(tag: Static.picker, rowType: .Picker, title: "Cut Off Day")
+        row.configuration[FormRowDescriptor.Configuration.Options] = ["MO", "TU", "WE", "TH", "FR", "SA", "SU"]
+        row.configuration[FormRowDescriptor.Configuration.TitleFormatterClosure] = { value in
+            switch( value ) {
+            case "MO":
+                return "Monday"
+            case "TU":
+                return "Tuesday"
+            case "WE":
+                return "Wednesday"
+            case "TH":
+                return "Thursday"
+            case "FR":
+                return "Friday"
+            case "SA":
+                return "Saturday"
+            case "SU":
+                return "Sunday"
+            default:
+                return nil
+            }
+            } as TitleFormatterClosure
+        
+        row.value = "M"
+        
+        section5.addRow(row)
+        //
+        
+        var productsString = "Products"
         
         //products button
 
@@ -237,6 +256,8 @@ class SupplierVC: FormViewController {
         alert.show()
     }
     
-    
+    override func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+        self.view.endEditing(true)
+    }
  
 }
