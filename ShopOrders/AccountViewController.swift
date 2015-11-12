@@ -6,12 +6,15 @@
 //  Copyright (c) 2015 Hyper. All rights reserved.
 //
 
-import Realm
+import Alamofire
+import Realm 
 import SwiftForms
 import UIKit
 
 class AccountViewController: FormViewController {
 
+    
+    
     struct Static {
         static let shopNameTag = "shopName"
         static let shopAddressTag = "shopAddress"
@@ -131,12 +134,7 @@ class AccountViewController: FormViewController {
     
     func saveButtonPressed(){
         //validate
-
-
         if (formIsValid()){
-            
-            
-            
             //save entity account
             let realm = RLMRealm.defaultRealm()
             let accountInserto = AccountDAO()
@@ -168,15 +166,45 @@ class AccountViewController: FormViewController {
             if let shusa:String = self.form.formValues() ["closingTime"] as? String{
                 accountInserto.closingTime = shusa
             }
+            if let shusa:String = self.form.formValues() ["instructions"] as? String{
+                accountInsertoq 
+            
         }
+        self.view.endEditing(true)
+        self .dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func postForm(AccountDAO){
         
-//        self.view.endEditing(true)
-//        self .dismissViewControllerAnimated(true, completion: nil)
+        let parameters = [
+            "name": "user1",
+            "username": "user1",
+            "password": "password1",
+            "shopName": "shopa",
+            "address": "23 sh",
+            "phone": "2323",
+            "email": "ju@ja.net",
+            "contactName": "julious",
+            "ABN": "2323",
+            "URL": "2323",
+            "openingTime": "12",
+            "closingTime": "23",
+            "instructions": "never take the garbage out the front"
+        ]
+        
+ 
+        
+        Alamofire.request(.POST, "http://ordering.gizmomen.com/api/users/", parameters: parameters, encoding: .JSON)
+        // HTTP body: {"foo": [1, 2, 3], "bar": {"baz": "qux"}}
+
     }
     
     func formIsValid()->Bool{
 //        let message = self.form.formValues().description
         if(!analizeFormField("shopName", value: "shop")){
+            return false
+        }
+        if(!analizeFormField("email", value: "email")){
             return false
         }
         if(!analizeFormField("email", value: "email")){

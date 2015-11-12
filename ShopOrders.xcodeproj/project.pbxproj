@@ -20,6 +20,7 @@
 		B575AD2F1B8606A5001F2EEF /* MyOrdersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B575AD2E1B8606A5001F2EEF /* MyOrdersTableViewController.swift */; };
 		B5AE5A021B82198D00A2B25E /* ProductsDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AE5A011B82198D00A2B25E /* ProductsDAO.swift */; };
 		B5AE5A041B835D7700A2B25E /* RLMSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AE5A031B835D7700A2B25E /* RLMSupport.swift */; };
+		B5B288A81BF2224B00BBFCBC /* MK_Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B288A71BF2224B00BBFCBC /* MK_Services.swift */; };
 		B5D213161B7E414A00CDDC31 /* NewOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D213151B7E414A00CDDC31 /* NewOrder.swift */; };
 		B5DC48E81B8052470090D826 /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DC48E71B8052470090D826 /* Products.swift */; };
 		B5DC48F51B806D670090D826 /* SupplierVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DC48F41B806D670090D826 /* SupplierVC.swift */; };
@@ -59,6 +60,7 @@
 		B575AD2E1B8606A5001F2EEF /* MyOrdersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOrdersTableViewController.swift; sourceTree = "<group>"; };
 		B5AE5A011B82198D00A2B25E /* ProductsDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductsDAO.swift; sourceTree = "<group>"; };
 		B5AE5A031B835D7700A2B25E /* RLMSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLMSupport.swift; sourceTree = "<group>"; };
+		B5B288A71BF2224B00BBFCBC /* MK_Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MK_Services.swift; sourceTree = "<group>"; };
 		B5D213151B7E414A00CDDC31 /* NewOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewOrder.swift; sourceTree = "<group>"; };
 		B5DC48E71B8052470090D826 /* Products.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
 		B5DC48F41B806D670090D826 /* SupplierVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupplierVC.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 		B52FEAA51B7E1561002795AF /* ShopOrders */ = {
 			isa = PBXGroup;
 			children = (
+				B5B288A61BF2222F00BBFCBC /* Shared */,
 				B52FEAA81B7E1561002795AF /* AppDelegate.swift */,
 				B55121CB1B89590400B50B1D /* BaseViewController.swift */,
 				B5E1E01F1B99112700BC329F /* AccountViewController.swift */,
@@ -171,6 +174,14 @@
 				B52FEABF1B7E1561002795AF /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B5B288A61BF2222F00BBFCBC /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				B5B288A71BF2224B00BBFCBC /* MK_Services.swift */,
+			);
+			name = Shared;
 			sourceTree = "<group>";
 		};
 		B5DC48EB1B806C370090D826 /* Model */ = {
@@ -345,6 +356,7 @@
 				B55121CC1B89590400B50B1D /* BaseViewController.swift in Sources */,
 				B513E0AD1B84A1C400E9CC72 /* OrderDao.swift in Sources */,
 				B5DC48E81B8052470090D826 /* Products.swift in Sources */,
+				B5B288A81BF2224B00BBFCBC /* MK_Services.swift in Sources */,
 				B5DC48F91B8095580090D826 /* Supplier.swift in Sources */,
 				B5E1E01E1B9797B500BC329F /* AccountDAO.swift in Sources */,
 				B5AE5A041B835D7700A2B25E /* RLMSupport.swift in Sources */,
